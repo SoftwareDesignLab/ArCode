@@ -16,4 +16,4 @@ A step-by-step instruction on how to use ArCode.
 Link to the tutorial video will be uploaded shortly.
 
 # Contact
-Please do not hasitate to reach out to us should you have any question about ArCode. You may get in contact with us throught as8308@rit.edu.
+Please do not hasitate to reach out to us should you have any question about ArCode. You may get in contact with us throught as8308 at rit dot edu.
