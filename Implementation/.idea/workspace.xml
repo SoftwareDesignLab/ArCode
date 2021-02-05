@@ -1,0 +1,820 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_TEST_SOURCES" value="false" />
+  </component>
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="specminer:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand />
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a2e0791b-6ff6-438a-a698-d1571ee4e831" name="Default Changelist" comment="Re-structuring the project into separated packages for identification, removing, and re-generating the code. &#10;Also, one feature has been added: Enabling introduction of classes to be considered (not to be removed) while summerizing the code." />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="repository" />
+    </option>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/fspec2recom/src/main/java/edu/rit/se/design/fspec2recom/GraphEditDistanceComputer.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="printErrorStackTraces" value="true" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="downloadSourcesAutomatically" value="true" />
+        <option name="jdkForImporter" value="1.8" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="1.8" />
+  </component>
+  <component name="ProjectId" id="1c6M1P8Y9jQvJXL3JBwwLIJWVXp" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="JavaClassFindUsagesOptions.isDerivedClasses" value="true" />
+    <property name="JavaClassFindUsagesOptions.isFieldsUsages" value="true" />
+    <property name="JavaClassFindUsagesOptions.isMethodsUsages" value="true" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.1531339" />
+    <property name="project.structure.side.proportion" value="0.5334873" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/fspec2recom/src/main/java/edu/rit/se/design/patternMining/mapo/evaluation" />
+      <recent name="$PROJECT_DIR$/specminer/src/main/java/edu/rit/se/design/specminer/analysis/dependencyresolver" />
+      <recent name="$PROJECT_DIR$/specminer/src/main/java" />
+      <recent name="$PROJECT_DIR$/fspec2code/src/main/java" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/ibm/wala/cast/java/translator/polyglot" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/specminer" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/ibm/wala/cast/java" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/ibm/wala/cast/java/translator/jdt" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="edu.rit.se.design.patternMining.mapo" />
+      <recent name="edu.rit.se.design.fspec2recom" />
+      <recent name="" />
+      <recent name="edu.rit.se.design.specminer.graam" />
+      <recent name="edu.rit.se.design.specminer.analysis" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.ArCodeRecommendation">
+    <configuration name="ArCodeRecommendation" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="edu.rit.se.design.fspec2recom.FSpec2RecomRunner" />
+      <module name="fspec2recom" />
+      <option name="PROGRAM_PARAMETERS" value="-framework JAAS -fspecOutputPath &quot;$PROJECT_DIR$/../DataRepository/JAAS&quot; -trainProjectsPath &quot;$PROJECT_DIR$/../DataRepository/JAAS/Train&quot; -testProjectsPath &quot;$PROJECT_DIR$/../DataRepository/JAAS/Test&quot; -exclusionFilePath &quot;$PROJECT_DIR$/specminer/config/JAASJavaExclusions.txt&quot; -frameworkJarPath &quot;$PROJECT_DIR$/../Frameworks/JAAS-RMI.jar&quot; -frameworkPackage javax/security/auth" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ArCodeRunner" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="edu.rit.se.design.specminer.SpecMinerRunner" />
+      <module name="specminer" />
+      <option name="PROGRAM_PARAMETERS" value="-framework JAAS -fspecOutputPath &quot;$PROJECT_DIR$/../DataRepository/JAAS&quot; -projectsPath &quot;$PROJECT_DIR$/../DataRepository/JAAS/Train&quot; -exclusionFilePath &quot;$PROJECT_DIR$/specminer/config/JAASJavaExclusions.txt&quot; -frameworkJarPath &quot;$PROJECT_DIR$/../../SpecMiner/Implementation/SpecMiner/config/JREs/jre1.8.0_131/lib/rt.jar&quot; -frameworkPackage javax/security/auth" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FSpec2Code Test" type="Application" factoryName="Application" folderName="New Folder">
+      <option name="MAIN_CLASS_NAME" value="edu.rit.se.design.fspec2code.Test" />
+      <module name="fspec2code" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.rit.se.design.specminer.fspec.FSpec" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FSpec2Recom Test" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="edu.rit.se.design.fspec2recom.Test" />
+      <module name="fspec2recom" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IFDBuilder" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="edu.rit.se.design.specminer.ifd.IFDBuilder" />
+      <module name="specminer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.rit.se.design.specminer.ifd.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MapoExperiment" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="edu.rit.se.design.patternMining.mapo.evaluation.MapoExperiment" />
+      <module name="fspec2recom" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProgrammingTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="edu.rit.se.design.fspec2code.ProgrammingTest" />
+      <module name="fspec2code" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpecMinerRunner-JAR_JAAS-IFD Test" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="edu.rit.se.design.specminer.SpecMinerRunner" />
+      <module name="specminer" />
+      <option name="PROGRAM_PARAMETERS" value="-framework JAAS -fspecOutputPath $PROJECT_DIR$/../../SpecMiner/Data/JAAS/Working -projectsPath $PROJECT_DIR$/../../SpecMiner/Data/JAAS/Working/50ProjsJar/AllJars -minerType FROM_JAR -exclusionFilePath $PROJECT_DIR$/specminer/config/JAASJavaExclusions.txt -frameworkJarPath $PROJECT_DIR$/../../SpecMiner/Implementation/SpecMiner/config/JREs/jre1.8.0_131/lib/rt.jar -frameworkPackage javax/security/auth" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpecMinerRunner-JAR_JAAS" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="edu.rit.se.design.specminer.SpecMinerRunner" />
+      <module name="specminer" />
+      <option name="PROGRAM_PARAMETERS" value="-framework JAAS -fspecOutputPath $PROJECT_DIR$/../../SpecMiner/Data/JAAS/Working -projectsPath $PROJECT_DIR$/../../SpecMiner/Data/JAAS/Working/50ProjsJar/StudentTest -minerType FROM_JAR -exclusionFilePath $PROJECT_DIR$/specminer/config/JAASJavaExclusions.txt -frameworkJarPath $PROJECT_DIR$/../../SpecMiner/Implementation/SpecMiner/config/JREs/jre1.8.0_131/lib/rt.jar -frameworkPackage javax/security/auth" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpecMinerRunner-JAR_RMI" type="Application" factoryName="Application" folderName="New Folder">
+      <option name="MAIN_CLASS_NAME" value="edu.rit.se.design.specminer.SpecMinerRunner" />
+      <module name="specminer" />
+      <option name="PROGRAM_PARAMETERS" value="-framework RMI -fspecOutputPath $PROJECT_DIR$/../../SpecMiner/Data/RMI/Working -projectsPath $PROJECT_DIR$/../../SpecMiner/Data/RMI/Working/50ProjsJar/Train -minerType FROM_JAR -exclusionFilePath $PROJECT_DIR$/specminer/config/JAASJavaExclusions.txt -frameworkJarPath $PROJECT_DIR$/../../SpecMiner/Implementation/SpecMiner/config/JREs/jre1.8.0_131/lib/rt.jar -frameworkPackage java/rmi" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.rit.se.design.specminer.fspec.FSpec" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpecMinerRunner-SRC" type="Application" factoryName="Application" folderName="New Folder">
+      <option name="MAIN_CLASS_NAME" value="edu.rit.se.design.specminer.SpecMinerRunner" />
+      <module name="specminer" />
+      <option name="PROGRAM_PARAMETERS" value="-framework JAAS -fspecOutputPath $PROJECT_DIR$/../../SpecMiner/Data/JAAS/Working -projectsPath $PROJECT_DIR$/../../SpecMiner/Data/JAAS/Working/50ProjsSrc/Train -minerType FROM_SOURCE -exclusionFilePath $PROJECT_DIR$/specminer/config/JAASJavaExclusions.txt -frameworkJarPath $PROJECT_DIR$/../../SpecMiner/Implementation/SpecMiner/config/JREs/jre1.8.0_131/lib/rt.jar -frameworkPackage javax/security/auth" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.rit.se.design.specminer.fspec.FSpec" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.FSpec2Code Test" />
+      <item itemvalue="Application.SpecMinerRunner-JAR_RMI" />
+      <item itemvalue="Application.SpecMinerRunner-SRC" />
+      <item itemvalue="Application.SpecMinerRunner-JAR_JAAS-IFD Test" />
+      <item itemvalue="Application.ArCodeRunner" />
+      <item itemvalue="Application.ArCodeRecommendation" />
+      <item itemvalue="Application.FSpec2Recom Test" />
+      <item itemvalue="Application.IFDBuilder" />
+      <item itemvalue="Application.SpecMinerRunner-JAR_JAAS" />
+      <item itemvalue="Application.MapoExperiment" />
+      <item itemvalue="Application.ProgrammingTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ProgrammingTest" />
+        <item itemvalue="Application.SpecMinerRunner-JAR_JAAS" />
+        <item itemvalue="Application.FSpec2Recom Test" />
+        <item itemvalue="Application.MapoExperiment" />
+        <item itemvalue="Application.IFDBuilder" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a2e0791b-6ff6-438a-a698-d1571ee4e831" name="Default Changelist" comment="" />
+      <created>1589844373882</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1589844373882</updated>
+      <workItem from="1589844377549" duration="59941000" />
+      <workItem from="1590350075633" duration="118000" />
+      <workItem from="1590373306614" duration="6884000" />
+      <workItem from="1590424035797" duration="154001000" />
+      <workItem from="1591379793633" duration="11766000" />
+      <workItem from="1591450704309" duration="38543000" />
+      <workItem from="1591670279878" duration="38000" />
+      <workItem from="1591670331146" duration="29385000" />
+      <workItem from="1591834598498" duration="82665000" />
+      <workItem from="1592577883714" duration="14209000" />
+      <workItem from="1592843611354" duration="11633000" />
+      <workItem from="1593195330372" duration="2608000" />
+      <workItem from="1594764285914" duration="37030000" />
+      <workItem from="1595439194667" duration="46000" />
+      <workItem from="1595439271267" duration="326000" />
+      <workItem from="1595439640491" duration="5397000" />
+      <workItem from="1595455092227" duration="5522000" />
+      <workItem from="1595691426933" duration="1530000" />
+      <workItem from="1596116450949" duration="66000" />
+      <workItem from="1596322620661" duration="68186000" />
+      <workItem from="1596910284081" duration="35821000" />
+      <workItem from="1597180557925" duration="157559000" />
+      <workItem from="1603373670953" duration="17294000" />
+      <workItem from="1603922363234" duration="2774000" />
+      <workItem from="1605709910553" duration="3979000" />
+      <workItem from="1606056870485" duration="52633000" />
+      <workItem from="1606926370078" duration="3777000" />
+      <workItem from="1607011166202" duration="2018000" />
+      <workItem from="1607973173604" duration="38451000" />
+      <workItem from="1608135916800" duration="7854000" />
+      <workItem from="1608303551676" duration="31030000" />
+      <workItem from="1609732740882" duration="2402000" />
+      <workItem from="1611757520605" duration="462000" />
+      <workItem from="1612101124159" duration="2057000" />
+      <workItem from="1612214516944" duration="1034000" />
+      <workItem from="1612358629307" duration="3528000" />
+      <workItem from="1612473983730" duration="1905000" />
+      <workItem from="1612478113389" duration="246000" />
+      <workItem from="1612478373038" duration="1066000" />
+    </task>
+    <task id="LOCAL-00001" summary="SpecMiner first commit.">
+      <created>1592619346992</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1592619346992</updated>
+    </task>
+    <task id="LOCAL-00002" summary="SpecMiner first commit.">
+      <created>1592679051240</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1592679051240</updated>
+    </task>
+    <task id="LOCAL-00003" summary="SpecMiner first commit.">
+      <created>1592679209255</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1592679209255</updated>
+    </task>
+    <task id="LOCAL-00004" summary="FSpec2Code first commit.">
+      <created>1592688566177</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1592688566177</updated>
+    </task>
+    <task id="LOCAL-00005" summary="SpecMiner first commit.">
+      <created>1592688597243</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1592688597243</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feature-fspec2java_translator branch commit test">
+      <created>1592695543364</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1592695543364</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Generating meaningful variable names for code generation.">
+      <created>1592957128674</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1592957128674</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Adding a Maven-based dependency resolver to the project analyzer from source code.&#10;It finds the expected jar files locations, though, it does not download them if absent.">
+      <created>1593183307571</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1593183307571</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Distinguishing between instantiation of an abstract class/interface in GRAAM/FSpec and concrete classes. We need this to have a more accurate code generation. &#10; For instance, generating CallbackHandler c = new CallbackHandler(...) has compilation error since CallbackHandler is not a concrete class.">
+      <created>1595367498514</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1595367498514</updated>
+    </task>
+    <task id="LOCAL-00010" summary="creating a separated package for project dependency resolvers since we are going to add more dependency resolvers (e.g. MagpieBridge dependency resolver)">
+      <created>1595367652903</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1595367652903</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Creating an SpecMinerRunner to be used while running SpecMiner from specminer.jar&#10;Adding Maven plugins for compilation and jar generation.">
+      <created>1595454831881</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1595454831881</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Generating parametric methods while user inputs are needed.&#10;For instance, if there is an instantiation of an abstract class or an interface, we ask the user to provide an object of them.">
+      <created>1595454934226</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1595454934226</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Detecting array return types by FSpecAPICallNode">
+      <created>1596546642881</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1596546642881</updated>
+    </task>
+    <task id="LOCAL-00014" summary="-Adding MagpieBridge dependency detector&#10;-Packaging and creating a Jar file using maven (pom.xml)">
+      <created>1596546930406</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1596546930406</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Recognizing static API calls in graph nodes. This is due to validating the created graph as each non-static API call node in the graph should have a data dependency to its reference object.">
+      <created>1596547074687</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1596547074687</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Generating a correct code for array variables">
+      <created>1596547172956</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1596547172956</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Generating methods with unique names for the while FSpec (without enclosing by a class)">
+      <created>1596547244652</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1596547244652</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Version changed in the pom file">
+      <created>1596547710993</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1596547710993</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Some trivial changes (e.g. System.out...)">
+      <created>1596547750055</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1596547750055</updated>
+    </task>
+    <task id="LOCAL-00020" summary="1. Changing the edge type between GRAAM and FSpec nodes from only API_CONSTRAINT to two different edge types: EXPLICIT_DATA_DEP and IMPLICIT_DATA_DEP&#10;2. Differentiating between public and non-public and static and non-static methods. These would be useful in code generator module.&#10;3. Creating a new class, FSpecUtil, and putting some utilities that might be used by other modules as well (e.g. finding context-basedd node mappings, etc.) in it.&#10;4. Moving some useful utilities about GRAAMs (e.g. load from file and save to file) to GRAAMBuilder">
+      <created>1597250108440</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1597250108440</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Considering inheritance and non-instantiatable classes (abstract/interface) while generating the code">
+      <created>1597250221788</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1597250221788</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Creating the structure of ASTNodeRemover class.">
+      <created>1606060231460</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1606060231460</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Applying changing to some classes and interfaces">
+      <created>1606150187895</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1606150187895</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Re-structuring the project into separated packages for identification, removing, and re-generating the code. &#10;Also, one feature has been added: Enabling introduction of classes to be considered (not to be removed) while summerizing the code.">
+      <created>1606440952173</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1606440952173</updated>
+    </task>
+    <task id="LOCAL-00025" summary="ArCode, accepted paper in ICSA 2021">
+      <created>1612472183052</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1612472183052</updated>
+    </task>
+    <task id="LOCAL-00026" summary="ArCode: Paper accepted in ICSA 2021">
+      <created>1612472814971</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1612472814971</updated>
+    </task>
+    <task id="LOCAL-00027" summary="ArCode: Paper accepted in ICSA 2021">
+      <created>1612472976001</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1612472976001</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$/programpreprocessor" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="SHOW_ROOT_NAMES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="user">
+                    <value>
+                      <list>
+                        <option value="*" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="1" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="User">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="*" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="FSpec2Code first commit." />
+    <MESSAGE value="SpecMiner first commit." />
+    <MESSAGE value="feature-fspec2java_translator branch commit test" />
+    <MESSAGE value="Generating meaningful variable names for code generation." />
+    <MESSAGE value="Adding a Maven-based dependency resolver to the project analyzer from source code.&#10;It finds the expected jar files locations, though, it does not download them if absent." />
+    <MESSAGE value="Distinguishing between instantiation of an abstract class/interface in GRAAM/FSpec and concrete classes. We need this to have a more accurate code generation. &#10; For instance, generating CallbackHandler c = new CallbackHandler(...) has compilation error since CallbackHandler is not a concrete class." />
+    <MESSAGE value="creating a separated package for project dependency resolvers since we are going to add more dependency resolvers (e.g. MagpieBridge dependency resolver)" />
+    <MESSAGE value="Creating an SpecMinerRunner to be used while running SpecMiner from specminer.jar&#10;Adding Maven plugins for compilation and jar generation." />
+    <MESSAGE value="Generating parametric methods while user inputs are needed.&#10;For instance, if there is an instantiation of an abstract class or an interface, we ask the user to provide an object of them." />
+    <MESSAGE value="Detecting array return types by FSpecAPICallNode" />
+    <MESSAGE value="-Adding MagpieBridge dependency detector&#10;-Packaging and creating a Jar file using maven (pom.xml)" />
+    <MESSAGE value="Recognizing static API calls in graph nodes. This is due to validating the created graph as each non-static API call node in the graph should have a data dependency to its reference object." />
+    <MESSAGE value="Generating a correct code for array variables" />
+    <MESSAGE value="Generating methods with unique names for the while FSpec (without enclosing by a class)" />
+    <MESSAGE value="Version changed in the pom file" />
+    <MESSAGE value="Some trivial changes (e.g. System.out...)" />
+    <MESSAGE value="1. Changing the edge type between GRAAM and FSpec nodes from only API_CONSTRAINT to two different edge types: EXPLICIT_DATA_DEP and IMPLICIT_DATA_DEP&#10;2. Differentiating between public and non-public and static and non-static methods. These would be useful in code generator module.&#10;3. Creating a new class, FSpecUtil, and putting some utilities that might be used by other modules as well (e.g. finding context-basedd node mappings, etc.) in it.&#10;4. Moving some useful utilities about GRAAMs (e.g. load from file and save to file) to GRAAMBuilder" />
+    <MESSAGE value="Considering inheritance and non-instantiatable classes (abstract/interface) while generating the code" />
+    <MESSAGE value="Creating the structure of ASTNodeRemover class." />
+    <MESSAGE value="Applying changing to some classes and interfaces" />
+    <MESSAGE value="Re-structuring the project into separated packages for identification, removing, and re-generating the code. &#10;Also, one feature has been added: Enabling introduction of classes to be considered (not to be removed) while summerizing the code." />
+    <MESSAGE value="ArCode, accepted paper in ICSA 2021" />
+    <MESSAGE value="ArCode: Paper accepted in ICSA 2021" />
+    <option name="LAST_COMMIT_MESSAGE" value="ArCode: Paper accepted in ICSA 2021" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/rit/se/design/specminer/analysis/SetOfExclusionClasses.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/com/ibm/wala/com.ibm.wala.core/1.5.5/com.ibm.wala.core-1.5.5-sources.jar!/com/ibm/wala/ssa/DefaultIRFactory.java</url>
+          <line>71</line>
+          <option name="timeStamp" value="285" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/com/ibm/wala/com.ibm.wala.core/1.5.5/com.ibm.wala.core-1.5.5-sources.jar!/com/ibm/wala/classLoader/ClassLoaderImpl.java</url>
+          <line>505</line>
+          <option name="timeStamp" value="301" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/com/ibm/wala/com.ibm.wala.cast.java.ecj/1.5.5/com.ibm.wala.cast.java.ecj-1.5.5-sources.jar!/com/ibm/wala/cast/java/translator/jdt/ecj/ECJSourceModuleTranslator.java</url>
+          <line>188</line>
+          <option name="timeStamp" value="302" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/rit/se/design/specminer/ifd/IFDBuilder.java</url>
+          <line>158</line>
+          <option name="timeStamp" value="399" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/rit/se/design/specminer/util/graph/DirectedGraph.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="414" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/rit/se/design/fspec2code/CodeGenerator.java</url>
+          <line>77</line>
+          <option name="timeStamp" value="489" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/rit/se/design/fspec2code/FSpecNodeCodeGenerator.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="504" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/rit/se/design/specminer/SpecMiner.java</url>
+          <line>64</line>
+          <option name="timeStamp" value="506" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/specminer/src/main/java/edu/rit/se/design/specminer/SpecMiner.java</url>
+          <line>109</line>
+          <option name="timeStamp" value="527" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/specminer/src/main/java/edu/rit/se/design/specminer/analysis/WalaUtils.java</url>
+          <line>217</line>
+          <option name="timeStamp" value="535" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/specminer/src/main/java/edu/rit/se/design/specminer/analysis/ProjectAnalyzerFromSource.java</url>
+          <line>202</line>
+          <option name="timeStamp" value="559" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/specminer/src/main/java/edu/rit/se/design/specminer/analysis/dependencyresolver/MagpieBridgeProjectDependencyResolver.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="563" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/specminer/src/main/java/edu/rit/se/design/specminer/fspec/FSpecAPICallNode.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="622" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/specminer/src/main/java/edu/rit/se/design/specminer/graam/PrimaryAPIGraphBuilder.java</url>
+          <line>753</line>
+          <option name="timeStamp" value="637" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/com/ibm/wala/com.ibm.wala.core/1.5.5/com.ibm.wala.core-1.5.5-sources.jar!/com/ibm/wala/ipa/cha/ClassHierarchy.java</url>
+          <line>884</line>
+          <option name="timeStamp" value="680" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/specminer/src/main/java/edu/rit/se/design/specminer/fspec/FSpecUtil.java</url>
+          <line>317</line>
+          <option name="timeStamp" value="697" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fspec2recom/src/main/java/edu/rit/se/design/fspec2recom/RemoveEdge.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="744" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fspec2recom/src/main/java/edu/rit/se/design/fspec2recom/AddEdge.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="745" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/fspec2recom/src/main/java/edu/rit/se/design/fspec2recom/GraphEditDistanceComputer.java</url>
+          <line>185</line>
+          <option name="timeStamp" value="747" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/fspec2recom/src/main/java/edu/rit/se/design/fspec2recom/GraphEditDistanceComputer.java</url>
+          <line>134</line>
+          <option name="timeStamp" value="748" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/fspec2recom/src/main/java/edu/rit/se/design/fspec2recom/GraphEditDistanceComputer.java</url>
+          <line>190</line>
+          <option name="timeStamp" value="750" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/fspec2recom/src/main/java/edu/rit/se/design/fspec2recom/GraphEditDistanceComputer.java</url>
+          <line>194</line>
+          <option name="timeStamp" value="751" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/specminer/src/main/java/edu/rit/se/design/specminer/util/graph/DirectedGraph.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="792" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/specminer/src/main/java/edu/rit/se/design/specminer/util/graph/DirectedGraph.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="794" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/specminer/src/main/java/edu/rit/se/design/specminer/util/graph/DirectedGraph.java</url>
+          <line>120</line>
+          <option name="timeStamp" value="822" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/specminer/src/main/java/edu/rit/se/design/specminer/graam/GRAAMBuilder.java</url>
+          <line>652</line>
+          <option name="timeStamp" value="858" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_251.jdk/Contents/Home/src.zip!/java/lang/ClassCastException.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="938" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/specminer/src/main/java/edu/rit/se/design/specminer/util/graph/DirectedGraph.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="965" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/specminer/src/main/java/edu/rit/se/design/specminer/graam/PrimaryAPIGraphBuilder.java</url>
+          <line>134</line>
+          <option name="timeStamp" value="1012" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fspec2recom/src/main/java/edu/rit/se/design/fspec2recom/MissedAPITestGenerator.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="1080" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fspec2recom/src/main/java/edu/rit/se/design/patternMining/mapo/evaluation/MapoExperiment.java</url>
+          <line>72</line>
+          <option name="timeStamp" value="1220" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fspec2recom/src/main/java/edu/rit/se/design/fspec2recom/Test.java</url>
+          <line>135</line>
+          <option name="timeStamp" value="1221" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fspec2recom/src/main/java/edu/rit/se/design/fspec2recom/FSpec2RecomRunner.java</url>
+          <line>182</line>
+          <option name="timeStamp" value="1242" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo />
+        <PinnedItemInfo parentTag="java.lang.Integer" memberName="value" />
+        <PinnedItemInfo parentTag="java.util.HashMap$Node" memberName="value" />
+        <PinnedItemInfo parentTag="com.ibm.wala.classLoader.ShrikeClass" memberName="interfaceNames" />
+      </pinned-members>
+    </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="new GRAAMVisualizer(graam).dotOutput()" language="JAVA" custom="edu.rit.se.design.specminer.graam.GRAAMVisualizer" />
+        <watch expression="new GRAAMVisualizer(testGraamLabel).dotOutput()" language="JAVA" custom="edu.rit.se.design.specminer.graam.GRAAMVisualizer" />
+        <watch expression="new GRAAMVisualizer(rankedRecommendations.get(0).sourceGraam).dotOutput()" language="JAVA" custom="edu.rit.se.design.specminer.graam.GRAAMVisualizer" />
+        <watch expression="new SubFSpecVisualizer(rankedRecommendations.get(0).distSubFSpec).dotOutput()" language="JAVA" />
+        <watch expression="new GRAAMVisualizer(( (HashMap.Node)((HashMap)((HashMap.Node)((HashMap)generatedTestCases).entrySet().toArray()[2]).getValue()).entrySet().toArray()[0]).getKey()).dotOutput()" language="JAVA" custom="java.util.HashMap.Node,java.util.HashMap,edu.rit.se.design.specminer.graam.GRAAMVisualizer" />
+        <watch expression="new GRAAMVisualizer(((java.util.ArrayList)((HashMap.Node)((HashMap)((HashMap.Node)((HashMap)generatedTestCases).entrySet().toArray()[2]).getValue()).entrySet().toArray()[0]).getValue()).get(0)).dotOutput()" language="JAVA" custom="java.util.ArrayList,java.util.HashMap.Node,java.util.HashMap,edu.rit.se.design.specminer.graam.GRAAMVisualizer" />
+        <watch expression="Recommender.getEmbededRecommendationRank( testGraamLabel, rankedRecommendations )" language="JAVA" />
+        <watch expression="new IFDVisualizer(ifd).dotOutput()" language="JAVA" custom="edu.rit.se.design.specminer.ifd.IFDVisualizer" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Implementation$Test.ic" NAME="Test Coverage Results" MODIFIED="1591538490786" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>edu.rit.se.design.specminer.fspec.FSpec</FILTER>
+    </SUITE>
+  </component>
+</project>
