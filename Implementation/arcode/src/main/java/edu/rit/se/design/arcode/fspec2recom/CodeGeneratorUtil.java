@@ -1,8 +1,8 @@
 package edu.rit.se.design.arcode.fspec2recom;
 
-import edu.rit.se.design.fspec2code.ClassHierarchyUtil;
-import edu.rit.se.design.fspec2code.CodeGenerationException;
-import edu.rit.se.design.fspec2code.CodeGenerator;
+import edu.rit.se.design.arcode.fspec2code.ClassHierarchyUtil;
+import edu.rit.se.design.arcode.fspec2code.CodeGenerationException;
+import edu.rit.se.design.arcode.fspec2code.CodeGenerator;
 import edu.rit.se.design.arcode.fspecminer.fspec.FSpecEndNode;
 
 import java.util.stream.Collectors;

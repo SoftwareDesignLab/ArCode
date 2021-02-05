@@ -1,6 +1,6 @@
-package edu.rit.se.design.patternMining.grouMiner;
+package edu.rit.se.design.arcode.fspec2recom.patternMining.grouMiner;
 
-import edu.rit.se.design.Constants;
+/*import edu.rit.se.design.Constants;
 import edu.rit.se.design.analysis.CLI;
 import edu.rit.se.design.analysis.ProjectAnalysisFactory;
 import edu.rit.se.design.evaluation.missedAPI.GrouMiner.GrouMinerMissedApiEvaluation;
@@ -22,10 +22,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.util.*;
+import java.util.*;*/
 
 public class GrouMinerTest {
-    public static void main(String[] args) throws Exception {
+/*    public static void main(String[] args) throws Exception {
 
         Class<? extends GraspNode>[] toBeRemovedGraspNodeTypes =
 //                        null;
@@ -166,5 +166,5 @@ public class GrouMinerTest {
         GrouMinerSwappedApiEvaluationResult grouMinerSwappedApiEvaluationResult = grouMinerSwappedApiEvaluation.evaluate();
         System.out.println( grouMinerSwappedApiEvaluationResult.getEvaluationResult() );
 
-    }
+    }*/
 }
