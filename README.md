@@ -22,10 +22,10 @@ To use ArCode in your research papers, please cite it as: BibTex
 In this section, we provide a we provide a step-by-step instruction to walk you through the process of building and using ArCode.
 
 ## Use a released version
-When we reach a stable version, we build the project and release it as a jar file. You can easily download the latest release from [here](\#). 
+When we reach a stable version, we build the project and release it as a jar file. You can easily download the latest release from [here](releases/). 
 
 ## Building ArCode from source code
-In order to build a runnable version of ArCode from the source code, you need to have Maven3 installed on your machine. The link to Maven can be found from [here] (https://maven.apache.org/).
+In order to build a runnable version of ArCode from the source code, you need to have Maven3 installed on your machine. The link to Maven can be found from [here](https://maven.apache.org/).
 Please use below command to build the ArCode runnable jar file once you have installed maven:
 ```
 mvn clean package
