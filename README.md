@@ -48,10 +48,10 @@ java -jar ARCODE_JAR_FILE -framework FRAMEWORK_OF_INTEREST -fspecOutputPath PATH
 - **PACKAGE_NAME_OF_FRAMEWORK:** Since there might be more than one framework in a jar file, we introduce the packaging of the framework through this property.
 
 After running ArCode, four folders in training as well as testing projects' directories will be created.
-.*GRAAMsDotGraph:* Contains generated GRAAMs for each project in the format of [dot graph](https://en.wikipedia.org/wiki/DOT_(graph_description_language)). To visualize each GRAAM, you can use a dot graph visualizer tool. For instance, one can copy-paste content of a file in *GRAAMsDotGraph* folder in the textbox area in [Webgraphviz](http://www.webgraphviz.com/) website and click the "Generate Graph" button.
-.*PAUGsDotGraph:* Contains generated Primary API Usage Graphs for each project in the format of [dot graph](https://en.wikipedia.org/wiki/DOT_(graph_description_language)). To visualize each Primary API Usage Graph, you can use a dot graph visualizer tool as mentioned before.
-.*SerializedGRAAMs:* ArCode saves generated GRAAMs in the format of serialized objects in this folder and restores them later.
-.*SerializedPAUGs:* ArCode saves generated Primary API Usage Graphs in the format of serialized objects in this folder and restores them later.
+* *GRAAMsDotGraph:* Contains generated GRAAMs for each project in the format of [dot graph](https://en.wikipedia.org/wiki/DOT_(graph_description_language)). To visualize each GRAAM, you can use a dot graph visualizer tool. For instance, one can copy-paste content of a file in *GRAAMsDotGraph* folder in the textbox area in [Webgraphviz](http://www.webgraphviz.com/) website and click the "Generate Graph" button.
+* *PAUGsDotGraph:* Contains generated Primary API Usage Graphs for each project in the format of [dot graph](https://en.wikipedia.org/wiki/DOT_(graph_description_language)). To visualize each Primary API Usage Graph, you can use a dot graph visualizer tool as mentioned before.
+* *SerializedGRAAMs:* ArCode saves generated GRAAMs in the format of serialized objects in this folder and restores them later.
+* *SerializedPAUGs:* ArCode saves generated Primary API Usage Graphs in the format of serialized objects in this folder and restores them later.
 
 ArCode uses GRAAMs generated for training programs to create the FSpec of JAAS. Then, it generates API misuses from GRAAMs of test data set. Finally, it provides recommendations for generated test cases and computes the accuracy of top-K recommendations. 
 
