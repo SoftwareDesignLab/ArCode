@@ -1,0 +1,26 @@
+digraph G {
+	graph[label="GRASP: course.jar1"];	node[style=filled,fillcolor ="white",shape=box,margin=0.02,width=0,height=0];
+	"Start_Node"[fillcolor ="yellow",style="filled" ];
+	"Remote.getAllStudents()FileInformation"[fillcolor ="#c0e2f8",style="filled" ];
+	"Remote.getSharedCourses()FileInformation"[fillcolor ="#c0e2f8",style="filled" ];
+	"Remote.getAllSelections()FileInformation"[fillcolor ="#c0e2f8",style="filled" ];
+	"init UnicastRemoteObject()V"[fillcolor ="#00e2f8",style="filled" ];
+	"Start_Node"[fillcolor ="yellow",style="filled" ];
+	"Remote.getAllCourses()FileInformation"[fillcolor ="#c0e2f8",style="filled" ];
+	"End_Node"[fillcolor ="yellow",style="filled" ];
+	"Remote.getAllStudents()FileInformation" -> "Remote.getSharedCourses()FileInformation"[color="red",style=solid];
+	"Remote.getSharedCourses()FileInformation" -> "End_Node"[color="red",style=solid];
+	"Remote.getAllSelections()FileInformation" -> "Remote.getAllStudents()FileInformation"[color="red",style=solid];
+	"init UnicastRemoteObject()V" -> "Remote.getAllStudents()FileInformation"[color="purple",style=dashed];
+	"init UnicastRemoteObject()V" -> "Remote.getAllStudents()FileInformation"[color="black",style=dotted];
+	"init UnicastRemoteObject()V" -> "Remote.getSharedCourses()FileInformation"[color="purple",style=dashed];
+	"init UnicastRemoteObject()V" -> "Remote.getSharedCourses()FileInformation"[color="black",style=dotted];
+	"init UnicastRemoteObject()V" -> "Remote.getAllSelections()FileInformation"[color="purple",style=dashed];
+	"init UnicastRemoteObject()V" -> "Remote.getAllSelections()FileInformation"[color="black",style=dotted];
+	"init UnicastRemoteObject()V" -> "Remote.getAllCourses()FileInformation"[color="red",style=solid];
+	"init UnicastRemoteObject()V" -> "Remote.getAllCourses()FileInformation"[color="purple",style=dashed];
+	"init UnicastRemoteObject()V" -> "Remote.getAllCourses()FileInformation"[color="black",style=dotted];
+	"Start_Node" -> "init UnicastRemoteObject()V"[color="red",style=solid];
+	"Start_Node" -> "init UnicastRemoteObject()V"[color="black",style=dotted];
+	"Remote.getAllCourses()FileInformation" -> "Remote.getAllSelections()FileInformation"[color="red",style=solid];
+}

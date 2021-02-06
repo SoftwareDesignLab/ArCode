@@ -1,0 +1,26 @@
+digraph G {
+	graph[label="GRASP: RMICalculator.jar1"];	node[style=filled,fillcolor ="white",shape=box,margin=0.02,width=0,height=0];
+	"Start_Node"[fillcolor ="yellow",style="filled" ];
+	"Start_Node"[fillcolor ="yellow",style="filled" ];
+	"Naming.lookup(String)Remote"[fillcolor ="#c0e2f8",style="filled" ];
+	"Remote.add(I;I)I"[fillcolor ="#c0e2f8",style="filled" ];
+	"Remote.mul(I;I)I"[fillcolor ="#c0e2f8",style="filled" ];
+	"End_Node"[fillcolor ="yellow",style="filled" ];
+	"Remote.sub(I;I)I"[fillcolor ="#c0e2f8",style="filled" ];
+	"Remote.div(I;I)I"[fillcolor ="#c0e2f8",style="filled" ];
+	"Start_Node" -> "Naming.lookup(String)Remote"[color="red",style=solid];
+	"Start_Node" -> "Naming.lookup(String)Remote"[color="black",style=dotted];
+	"Naming.lookup(String)Remote" -> "Remote.add(I;I)I"[color="red",style=solid];
+	"Naming.lookup(String)Remote" -> "Remote.add(I;I)I"[color="purple",style=dashed];
+	"Naming.lookup(String)Remote" -> "Remote.add(I;I)I"[color="black",style=dotted];
+	"Naming.lookup(String)Remote" -> "Remote.mul(I;I)I"[color="purple",style=dashed];
+	"Naming.lookup(String)Remote" -> "Remote.mul(I;I)I"[color="black",style=dotted];
+	"Naming.lookup(String)Remote" -> "Remote.sub(I;I)I"[color="purple",style=dashed];
+	"Naming.lookup(String)Remote" -> "Remote.sub(I;I)I"[color="black",style=dotted];
+	"Naming.lookup(String)Remote" -> "Remote.div(I;I)I"[color="purple",style=dashed];
+	"Naming.lookup(String)Remote" -> "Remote.div(I;I)I"[color="black",style=dotted];
+	"Remote.add(I;I)I" -> "Remote.sub(I;I)I"[color="red",style=solid];
+	"Remote.mul(I;I)I" -> "Remote.div(I;I)I"[color="red",style=solid];
+	"Remote.sub(I;I)I" -> "Remote.mul(I;I)I"[color="red",style=solid];
+	"Remote.div(I;I)I" -> "End_Node"[color="red",style=solid];
+}

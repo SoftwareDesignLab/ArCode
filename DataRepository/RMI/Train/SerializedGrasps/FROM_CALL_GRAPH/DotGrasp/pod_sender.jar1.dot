@@ -1,0 +1,18 @@
+digraph G {
+	graph[label="GRASP: pod_sender.jar1"];	node[style=filled,fillcolor ="white",shape=box,margin=0.02,width=0,height=0];
+	"Start_Node"[fillcolor ="yellow",style="filled" ];
+	"End_Node"[fillcolor ="yellow",style="filled" ];
+	"LocateRegistry.getRegistry(String;I)Registry"[fillcolor ="#c0e2f8",style="filled" ];
+	"Registry.lookup(String)Remote"[fillcolor ="#c0e2f8",style="filled" ];
+	"Remote.receive(String)String"[fillcolor ="#c0e2f8",style="filled" ];
+	"Start_Node"[fillcolor ="yellow",style="filled" ];
+	"LocateRegistry.getRegistry(String;I)Registry" -> "Registry.lookup(String)Remote"[color="red",style=solid];
+	"LocateRegistry.getRegistry(String;I)Registry" -> "Registry.lookup(String)Remote"[color="purple",style=dashed];
+	"LocateRegistry.getRegistry(String;I)Registry" -> "Registry.lookup(String)Remote"[color="black",style=dotted];
+	"Registry.lookup(String)Remote" -> "Remote.receive(String)String"[color="red",style=solid];
+	"Registry.lookup(String)Remote" -> "Remote.receive(String)String"[color="purple",style=dashed];
+	"Registry.lookup(String)Remote" -> "Remote.receive(String)String"[color="black",style=dotted];
+	"Remote.receive(String)String" -> "End_Node"[color="red",style=solid];
+	"Start_Node" -> "LocateRegistry.getRegistry(String;I)Registry"[color="red",style=solid];
+	"Start_Node" -> "LocateRegistry.getRegistry(String;I)Registry"[color="black",style=dotted];
+}

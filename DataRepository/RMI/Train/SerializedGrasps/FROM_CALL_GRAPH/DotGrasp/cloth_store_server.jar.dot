@@ -1,0 +1,22 @@
+digraph G {
+	graph[label="GRASP: cloth_store_server.jar"];	node[style=filled,fillcolor ="white",shape=box,margin=0.02,width=0,height=0];
+	"Start_Node"[fillcolor ="yellow",style="filled" ];
+	"Remote.lookUp(String)String"[fillcolor ="#c0e2f8",style="filled" ];
+	"Start_Node"[fillcolor ="yellow",style="filled" ];
+	"Naming.lookup(String)Remote"[fillcolor ="#c0e2f8",style="filled" ];
+	"End_Node"[fillcolor ="yellow",style="filled" ];
+	"Remote.order(I)String"[fillcolor ="#c0e2f8",style="filled" ];
+	"Remote.search(I)String"[fillcolor ="#c0e2f8",style="filled" ];
+	"Remote.lookUp(String)String" -> "Remote.search(I)String"[color="red",style=solid];
+	"Start_Node" -> "Naming.lookup(String)Remote"[color="red",style=solid];
+	"Start_Node" -> "Naming.lookup(String)Remote"[color="black",style=dotted];
+	"Naming.lookup(String)Remote" -> "Remote.lookUp(String)String"[color="red",style=solid];
+	"Naming.lookup(String)Remote" -> "Remote.lookUp(String)String"[color="purple",style=dashed];
+	"Naming.lookup(String)Remote" -> "Remote.lookUp(String)String"[color="black",style=dotted];
+	"Naming.lookup(String)Remote" -> "Remote.order(I)String"[color="purple",style=dashed];
+	"Naming.lookup(String)Remote" -> "Remote.order(I)String"[color="black",style=dotted];
+	"Naming.lookup(String)Remote" -> "Remote.search(I)String"[color="purple",style=dashed];
+	"Naming.lookup(String)Remote" -> "Remote.search(I)String"[color="black",style=dotted];
+	"Remote.order(I)String" -> "End_Node"[color="red",style=solid];
+	"Remote.search(I)String" -> "Remote.order(I)String"[color="red",style=solid];
+}

@@ -1,0 +1,14 @@
+digraph G {
+	graph[label="GRASP: mybatis.jar1"];	node[style=filled,fillcolor ="white",shape=box,margin=0.02,width=0,height=0];
+	"Start_Node"[fillcolor ="yellow",style="filled" ];
+	"Start_Node"[fillcolor ="yellow",style="filled" ];
+	"Naming.lookup(String)Remote"[fillcolor ="#c0e2f8",style="filled" ];
+	"Remote.getName()String"[fillcolor ="#c0e2f8",style="filled" ];
+	"End_Node"[fillcolor ="yellow",style="filled" ];
+	"Start_Node" -> "Naming.lookup(String)Remote"[color="red",style=solid];
+	"Start_Node" -> "Naming.lookup(String)Remote"[color="black",style=dotted];
+	"Naming.lookup(String)Remote" -> "Remote.getName()String"[color="red",style=solid];
+	"Naming.lookup(String)Remote" -> "Remote.getName()String"[color="purple",style=dashed];
+	"Naming.lookup(String)Remote" -> "Remote.getName()String"[color="black",style=dotted];
+	"Remote.getName()String" -> "End_Node"[color="red",style=solid];
+}

@@ -1,0 +1,10 @@
+digraph G {
+	graph[label="GRASP: course.jar2"];	node[style=filled,fillcolor ="white",shape=box,margin=0.02,width=0,height=0];
+	"Start_Node"[fillcolor ="yellow",style="filled" ];
+	"Naming.rebind(String;Remote)V"[fillcolor ="#c0e2f8",style="filled" ];
+	"End_Node"[fillcolor ="yellow",style="filled" ];
+	"Start_Node"[fillcolor ="yellow",style="filled" ];
+	"LocateRegistry.createRegistry(I)Registry"[fillcolor ="#c0e2f8",style="filled" ];
+	"Start_Node" -> "LocateRegistry.createRegistry(I)Registry"[color="black",style=dotted];
+	"Start_Node" -> "Naming.rebind(String;Remote)V"[color="black",style=dotted];
+}

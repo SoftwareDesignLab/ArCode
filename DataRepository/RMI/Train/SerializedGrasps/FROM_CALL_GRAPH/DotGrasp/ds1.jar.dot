@@ -1,0 +1,34 @@
+digraph G {
+	graph[label="GRASP: ds1.jar"];	node[style=filled,fillcolor ="white",shape=box,margin=0.02,width=0,height=0];
+	"Start_Node"[fillcolor ="yellow",style="filled" ];
+	"LocateRegistry.createRegistry(I)Registry"[fillcolor ="#c0e2f8",style="filled" ];
+	"Registry.rebind(String;Remote)V"[fillcolor ="#c0e2f8",style="filled" ];
+	"UnicastRemoteObject.exportObject(Remote;I)Remote"[fillcolor ="#c0e2f8",style="filled" ];
+	"End_Node"[fillcolor ="yellow",style="filled" ];
+	"LocateRegistry.getRegistry(I)Registry"[fillcolor ="#c0e2f8",style="filled" ];
+	"Registry.lookup(String)Remote"[fillcolor ="#c0e2f8",style="filled" ];
+	"Remote.InitHandler(Request)V"[fillcolor ="#c0e2f8",style="filled" ];
+	"Remote.Kill()V"[fillcolor ="#c0e2f8",style="filled" ];
+	"init Remote(I;HashMap;[String;[I)V"[fillcolor ="#00e2f8",style="filled" ];
+	"UnicastRemoteObject.unexportObject(Remote;Z)Z"[fillcolor ="#c0e2f8",style="filled" ];
+	"Start_Node"[fillcolor ="yellow",style="filled" ];
+	"Remote.Start()V"[fillcolor ="#c0e2f8",style="filled" ];
+	"LocateRegistry.getRegistry(I)Registry" -> "Registry.lookup(String)Remote"[color="red",style=solid];
+	"LocateRegistry.getRegistry(I)Registry" -> "Registry.lookup(String)Remote"[color="purple",style=dashed];
+	"LocateRegistry.getRegistry(I)Registry" -> "Registry.lookup(String)Remote"[color="black",style=dotted];
+	"Registry.lookup(String)Remote" -> "Remote.InitHandler(Request)V"[color="red",style=solid];
+	"Registry.lookup(String)Remote" -> "Remote.InitHandler(Request)V"[color="purple",style=dashed];
+	"Registry.lookup(String)Remote" -> "Remote.InitHandler(Request)V"[color="black",style=dotted];
+	"Remote.InitHandler(Request)V" -> "Remote.Start()V"[color="red",style=solid];
+	"Remote.Kill()V" -> "UnicastRemoteObject.unexportObject(Remote;Z)Z"[color="red",style=solid];
+	"init Remote(I;HashMap;[String;[I)V" -> "UnicastRemoteObject.exportObject(Remote;I)Remote"[color="purple",style=dashed];
+	"init Remote(I;HashMap;[String;[I)V" -> "UnicastRemoteObject.exportObject(Remote;I)Remote"[color="black",style=dotted];
+	"init Remote(I;HashMap;[String;[I)V" -> "LocateRegistry.createRegistry(I)Registry"[color="red",style=solid];
+	"init Remote(I;HashMap;[String;[I)V" -> "LocateRegistry.createRegistry(I)Registry"[color="black",style=dotted];
+	"init Remote(I;HashMap;[String;[I)V" -> "Registry.rebind(String;Remote)V"[color="black",style=dotted];
+	"Start_Node" -> "Remote.Kill()V"[color="black",style=dotted];
+	"Start_Node" -> "init Remote(I;HashMap;[String;[I)V"[color="black",style=dotted];
+	"Start_Node" -> "UnicastRemoteObject.unexportObject(Remote;Z)Z"[color="black",style=dotted];
+	"Start_Node" -> "Remote.Start()V"[color="black",style=dotted];
+	"Start_Node" -> "LocateRegistry.getRegistry(I)Registry"[color="black",style=dotted];
+}
