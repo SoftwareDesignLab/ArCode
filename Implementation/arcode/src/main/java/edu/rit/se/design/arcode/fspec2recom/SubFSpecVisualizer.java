@@ -1,6 +1,7 @@
 package edu.rit.se.design.arcode.fspec2recom;
 
 import edu.rit.se.design.arcode.fspecminer.fspec.*;
+import edu.rit.se.design.arcode.fspecminer.util.graph.DirectedGraph;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,5 +91,29 @@ public class SubFSpecVisualizer extends FSpecVisualizer {
         if( node instanceof FSpecNode)
             return  "oval";
         return null;
+    }
+
+    @Override
+    protected void addNode(FSpecNode graphNode, StringBuilder stringBuilder) {
+        if( !subFSpec.containsNode( graphNode ) )
+            return;
+        super.addNode(graphNode, stringBuilder);
+    }
+
+    @Override
+    protected void addEdge(FSpecNode fromGraphNode, FSpecNode toGraphNode, FSpecEdgeType directedGraphEdgeType, FSpecEdge edge, StringBuilder stringBuilder) {
+        if( !subFSpec.containsNode( fromGraphNode ) || !subFSpec.containsNode( toGraphNode ) )
+            return;
+        super.addEdge(fromGraphNode, toGraphNode, directedGraphEdgeType, edge, stringBuilder);
+    }
+
+    @Override
+    protected String getEdgeTitle(FSpecEdge edge) {
+        return "";
+    }
+
+    @Override
+    protected String getGraphTitle(DirectedGraph<FSpecNode, FSpecEdgeType, FSpecEdge> directedGraph) {
+        return "API Usage Recommendation";
     }
 }

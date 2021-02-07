@@ -48,9 +48,9 @@ public class PrimaryAPIGraphBuilder {
         this.ifd = ifd;
     }*/
     static final String SERIALIZED_PRIMARY_API_GRAPH_EXTENSION = ".psrz";
+    static final String DOT_GRAPH_EXTENSION = ".dot";
 
-
-    public static List<PrimaryAPIUsageGraph> buildPrimaryAPIUsageGraphs(ProjectAnalysis projectAnalysis, IFD ifd) throws Exception {
+    public static List<PrimaryAPIUsageGraph> buildPrimaryAPIUsageGraphs(ProjectAnalysis projectAnalysis, IFD ifd, boolean validatePAUGs) throws Exception {
         List<PrimaryAPIUsageGraph> primaryAPIUsageGraphList = new ArrayList<>();
         CallGraph callGraph = projectAnalysis.getCallGraph();
         PointerAnalysis pointerAnalysis = projectAnalysis.getPointerAnalysis();
@@ -102,10 +102,10 @@ public class PrimaryAPIGraphBuilder {
 
         List<PrimaryAPIUsageGraph> distinctPrimaryAPIUsageGraphs = getDistinctPrimaryAPIUsageGraphs( primaryAPIUsageGraphList );
 
-        List<PrimaryAPIUsageGraph> validatedDistinctPrimaryAPIUsageGraphs =
+        List<PrimaryAPIUsageGraph> validatedDistinctPrimaryAPIUsageGraphs = validatePAUGs ?
                 StreamSupport.stream(distinctPrimaryAPIUsageGraphs.spliterator(), false).
                         filter( primaryAPIUsageGraph -> isValidPrimaryAPIUsageGraph( primaryAPIUsageGraph ) && !violatesIFD( primaryAPIUsageGraph, ifd ) ).
-                        collect(Collectors.toList());
+                        collect(Collectors.toList()) : distinctPrimaryAPIUsageGraphs;
 
         CommonConstants.LOGGER.log( Level.FINE, " -> " + distinctPrimaryAPIUsageGraphs.size() + " PrimaryAPIUsageGraph(s) was/were created, " + validatedDistinctPrimaryAPIUsageGraphs.size() + " was/were accepted as valid PrimaryAPIUsageGraph(s)!" );
 
@@ -184,8 +184,30 @@ public class PrimaryAPIGraphBuilder {
                 e.printStackTrace();
             }
         });
+    }
+
+    public static void savePAUGsDotGraph(List<PrimaryAPIUsageGraph> paugs, String paugDotGraphFolder) {
+        Set<String> createdFiles = new HashSet<>();
+        File folder = new File(paugDotGraphFolder);
+        if (!folder.exists())
+            folder.mkdir();
+
+        paugs.forEach(paug -> {
+            String fileName = generateUniqueFileName(paug.getTitle(), createdFiles);
+            createdFiles.add(fileName);
+
+            String filePath = paugDotGraphFolder + "/" + fileName + DOT_GRAPH_EXTENSION;
+            try {
+                FileWriter fileWriter = new FileWriter( filePath );
+                fileWriter.write( (new PrimaryAPIUsageGraphVisualizer( paug )).dotOutput().toString() );
+                fileWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
 
     }
+
 
     static String generateUniqueFileName(String suggestedFileName, Set<String> takenFileNames) {
         String generatedFileName = suggestedFileName;

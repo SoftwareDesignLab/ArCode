@@ -129,7 +129,7 @@ public class SpecMinerRunner {
     //        "org/apache/lucene";
 
         SpecMiner specMiner = new SpecMiner(framework, frameworkJarPath, frameworkPackage, projectPath, minerType, exclusionFilePath);
-        specMiner.mineFrameworkSpecificationFromScratch();
+        specMiner.mineFrameworkSpecificationFromScratch(true);
         System.out.println( "Final FSpec:\n" + new FSpecVisualizer( specMiner.getMinedFSpec() ).dotOutput() + "\n");
 
         specMiner.saveFSpecToFile( fspecOutputPath );

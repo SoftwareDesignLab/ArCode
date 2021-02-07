@@ -93,24 +93,22 @@ public class GraphEditDistanceComputer {
         Map<GRAAMEdgeType, List<Pair<DirectedGraphNode, DirectedGraphNode>>> toBeRemovedEdges = computeToBeRemovedEdges( sourceGraam, toBeRemovedNodes );
 
         // I commented below lines to exclude removing edges cost. From now on, we only consider extra APIs that should be removed
-/*        toBeRemovedEdges.keySet().forEach( toBeRmovedEdgeType -> {
+        toBeRemovedEdges.keySet().forEach( toBeRmovedEdgeType -> {
             toBeRemovedEdges.get(toBeRmovedEdgeType).forEach( nodePair -> {
                 graphEditDistanceInfo.addOperation( new RemoveEdge( toBeRmovedEdgeType, nodePair.getKey(), nodePair.getValue() ) );
             } );
-        }  );*/
+        }  );
 
         toBeRemovedNodes.forEach( toBeRemovedNode -> graphEditDistanceInfo.addOperation( new RemoveNode( toBeRemovedNode ) ) );
 
         Map<GRAAMEdgeType, List<Pair<DirectedGraphNode, DirectedGraphNode>>> toBeAddedEdges = computeToBeAddedEdges( sourceGraam, subFSpec, nodeMapping );
 
         // I commented below lines to exclude adding edges cost. From now on, we only consider APIs that should be added and not their edges.
-/*
         toBeAddedEdges.keySet().forEach( toBeAddedEdgeType -> {
             toBeAddedEdges.get(toBeAddedEdgeType).forEach( nodePair -> {
                 graphEditDistanceInfo.addOperation( new AddEdge( toBeAddedEdgeType, nodePair.getKey(), nodePair.getValue() ) );
             } );
         }  );
-*/
 
         return graphEditDistanceInfo;
     }

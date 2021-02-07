@@ -4,7 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 
-import edu.rit.se.design.arcode.fspec2recom.FSpec2RecomRunner;
+import edu.rit.se.design.arcode.fspec2recom.FSpec2Recom;
+import edu.rit.se.design.arcode.fspec2recom.FSpec2RecomExperimentRunner;
 import edu.rit.se.design.arcode.fspecminer.SpecMiner;
 import edu.rit.se.design.arcode.fspecminer.util.common.CommonConstants;
 import org.apache.commons.cli.*;
@@ -23,6 +24,7 @@ public class ArCodeRunner {
         Option exclusionFilePath = Option.builder( "exclusionFilePath" ).hasArg().required(true).build();
         Option frameworkJarPath = Option.builder( "frameworkJarPath" ).hasArg().required(true).build();
         Option frameworkPackage = Option.builder( "frameworkPackage" ).hasArg().required(true).build();
+        Option mode = Option.builder( "mode" ).hasArg().required(false).build();
 
         Options options = new Options();
 
@@ -33,6 +35,7 @@ public class ArCodeRunner {
         options.addOption( exclusionFilePath );
         options.addOption( frameworkJarPath );
         options.addOption( frameworkPackage );
+        options.addOption( mode );
 
         CommandLineParser parser = new DefaultParser();
         CommandLine commandLine =  parser.parse(options, args);
@@ -44,11 +47,14 @@ public class ArCodeRunner {
         programArguments.put( "exclusionFilePath", commandLine.getOptionValue( "exclusionFilePath" ) );
         programArguments.put( "frameworkJarPath", commandLine.getOptionValue( "frameworkJarPath" ) );
         programArguments.put( "frameworkPackage", commandLine.getOptionValue( "frameworkPackage" ) );
+        programArguments.put( "mode", commandLine.getOptionValue( "mode" ) );
 
         return programArguments;
     }
 
     public static void main(String[] args) throws Exception {
+
+        CommonConstants.LOGGER.setLevel( Level.FINE );
 
         Map<String, String> programArguments = extractProgramArguments( args );
 
@@ -61,25 +67,20 @@ public class ArCodeRunner {
         String exclusionFilePath = programArguments.get("exclusionFilePath");
         String frameworkJarPath = programArguments.get("frameworkJarPath");
         String frameworkPackage = programArguments.get("frameworkPackage");
+        String mode = programArguments.get("mode");
 
         SpecMiner trainProjsSpecMiner = new SpecMiner(framework, frameworkJarPath, frameworkPackage, trainProjectsPath, minerType, exclusionFilePath);
         CommonConstants.LOGGER.log( Level.INFO, "Analyzing training projects");
 
-        trainProjsSpecMiner.mineFrameworkSpecificationFromScratch();
+        trainProjsSpecMiner.mineFrameworkSpecificationFromScratch(true);
         trainProjsSpecMiner.saveFSpecToFile( fspecOutputPath );
-//        System.out.println( "Final FSpec for train projects:\n" + new FSpecVisualizer( trainProjsSpecMiner.getMinedFSpec() ).dotOutput() + "\n");
 
         CommonConstants.LOGGER.log( Level.INFO, "Analyzing testing projects");
         SpecMiner testProjsSpecMiner = new SpecMiner(framework, frameworkJarPath, frameworkPackage, testProjectsPath, minerType, exclusionFilePath);
-        testProjsSpecMiner.mineFrameworkSpecificationFromScratch();
-//        System.out.println( "Final FSpec for test projects:\n" + new FSpecVisualizer( testProjsSpecMiner.getMinedFSpec() ).dotOutput() + "\n");
+        testProjsSpecMiner.mineFrameworkSpecificationFromScratch(false);
 
-        FSpec2RecomRunner.nextAPIRecommendationExperiment(trainProjsSpecMiner.getMinedFSpec(), testProjsSpecMiner.getSerializedGRAAMsFolder());
 
-        FSpec2RecomRunner.missedAPIExperiment(trainProjsSpecMiner.getMinedFSpec(), testProjsSpecMiner.getSerializedGRAAMsFolder(), 3);
-
-        FSpec2RecomRunner.swappedAPIExperiment(trainProjsSpecMiner.getMinedFSpec(), testProjsSpecMiner.getSerializedGRAAMsFolder(), 6);
-
+        FSpec2Recom.fspec2Recom( trainProjsSpecMiner.getMinedFSpec(), testProjsSpecMiner.getSerializedGRAAMsFolder(), 10 );
     }
 
 }

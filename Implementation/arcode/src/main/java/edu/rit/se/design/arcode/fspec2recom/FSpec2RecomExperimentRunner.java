@@ -4,6 +4,7 @@ import edu.rit.se.design.arcode.fspecminer.SpecMiner;
 import edu.rit.se.design.arcode.fspecminer.fspec.FSpec;
 import edu.rit.se.design.arcode.fspecminer.graam.GRAAM;
 import edu.rit.se.design.arcode.fspecminer.graam.GRAAMBuilder;
+import edu.rit.se.design.arcode.fspecminer.graam.GRAAMVisualizer;
 import edu.rit.se.design.arcode.fspecminer.util.common.CommonConstants;
 import org.apache.commons.cli.*;
 
@@ -18,7 +19,7 @@ import java.util.logging.Level;
  * @author Ali Shokri (as8308@rit.edu)
  */
 
-public class FSpec2RecomRunner {
+public class FSpec2RecomExperimentRunner {
     static Map<String, String> extractProgramArguments(String[] args) throws ParseException {
         Map<String, String> programArguments = new HashMap<>();
         Option framework = Option.builder( "framework" ).required(true).hasArg().build();
@@ -72,13 +73,13 @@ public class FSpec2RecomRunner {
         SpecMiner trainProjsSpecMiner = new SpecMiner(framework, frameworkJarPath, frameworkPackage, trainProjectsPath, minerType, exclusionFilePath);
         CommonConstants.LOGGER.log( Level.INFO, "Analyzing training projects");
 
-        trainProjsSpecMiner.mineFrameworkSpecificationFromScratch();
+        trainProjsSpecMiner.mineFrameworkSpecificationFromScratch(true);
 //        trainProjsSpecMiner.saveFSpecToFile( fspecOutputPath );
 //        System.out.println( "Final FSpec for train projects:\n" + new FSpecVisualizer( trainProjsSpecMiner.getMinedFSpec() ).dotOutput() + "\n");
 
         CommonConstants.LOGGER.log( Level.INFO, "Analyzing testing projects");
         SpecMiner testProjsSpecMiner = new SpecMiner(framework, frameworkJarPath, frameworkPackage, testProjectsPath, minerType, exclusionFilePath);
-        testProjsSpecMiner.mineFrameworkSpecificationFromScratch();
+        testProjsSpecMiner.mineFrameworkSpecificationFromScratch(false);
 //        System.out.println( "Final FSpec for test projects:\n" + new FSpecVisualizer( testProjsSpecMiner.getMinedFSpec() ).dotOutput() + "\n");
 
         nextAPIRecommendationExperiment(trainProjsSpecMiner.getMinedFSpec(), testProjsSpecMiner.getSerializedGRAAMsFolder());

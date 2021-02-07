@@ -33,7 +33,9 @@ public class SpecMiner {
     MinerType minerType;
     FSpec minedFSpec;
     String serializedGRAAMsFolder;
+    String graamsDotGraphFolder;
     String serializedPAGsFolder;
+    String paugsDotGraphFolder;
     IFD builtIFD = null;
 
     public SpecMiner(String framework, String frameworkJarPath, String frameworkPackage, String projectsFolder, String minerType, String exclusionFile ) {
@@ -45,21 +47,25 @@ public class SpecMiner {
         this.minerType = MinerType.valueOf( minerType );
         this.serializedGRAAMsFolder = projectsFolder + "/" + "SerializedGRAAMs";
         this.serializedPAGsFolder = projectsFolder + "/" + "SerializedPAUGs";
+        this.graamsDotGraphFolder = projectsFolder + "/" + "GRAAMsDotGraph";
+        this.paugsDotGraphFolder = projectsFolder + "/" + "PAUGsDotGraph";
     }
 
-    public void createGraamsForProjects(IFD ifd, Iterable<String> projects) throws Exception {
+    public void createGraamsForProjects(IFD ifd, Iterable<String> projects, boolean validatePAUGs) throws Exception {
 
         Map<GRAAM, PrimaryAPIUsageGraph> createdGRAAMs = new HashMap<>();
         for( String projectPath: projects)
-            createdGRAAMs.putAll( createGraamsForProject( projectPath, ifd ) );
+            createdGRAAMs.putAll( createGraamsForProject( projectPath, ifd, validatePAUGs ) );
 
         GRAAMBuilder.saveSerializedGRAAMs( new ArrayList<>(createdGRAAMs.keySet()), serializedGRAAMsFolder);
+        GRAAMBuilder.saveGRAAMsDotGraph( new ArrayList<>(createdGRAAMs.keySet()), graamsDotGraphFolder );
         PrimaryAPIGraphBuilder.saveSerializedPAGs( new ArrayList<>(createdGRAAMs.values()), serializedPAGsFolder);
+        PrimaryAPIGraphBuilder.savePAUGsDotGraph( new ArrayList<>(createdGRAAMs.values()), paugsDotGraphFolder);
     }
 
-    public void mineFrameworkSpecificationFromScratch() throws Exception {
+    public void mineFrameworkSpecificationFromScratch( boolean validatePAUGs ) throws Exception {
         builtIFD = createIFD();
-        createGraamsForProjects( builtIFD, getProjectsPaths() );
+        createGraamsForProjects( builtIFD, getProjectsPaths(), validatePAUGs );
         mineFrameworkSpecificationFromSerializedGRAAMs();
     }
 
@@ -148,7 +154,7 @@ public class SpecMiner {
 
     }*/
 
-    Map<GRAAM, PrimaryAPIUsageGraph> createGraamsForProject( String projectPath, IFD ifd ) throws Exception {
+    Map<GRAAM, PrimaryAPIUsageGraph> createGraamsForProject( String projectPath, IFD ifd, boolean validatePAUGs ) throws Exception {
         CommonConstants.LOGGER.log( Level.INFO, "Creating GRAAM(s) for " + projectPath );
         Map<GRAAM, PrimaryAPIUsageGraph> graamMap = new HashMap<>();
 
@@ -170,7 +176,7 @@ public class SpecMiner {
         ProjectAnalyzer projectAnalyzer = getProjectAnalyzer( projectPath );
         ProjectAnalysis projectAnalysis = projectAnalyzer.analyzeProject();
 
-        List<PrimaryAPIUsageGraph> primaryAPIUsageGraphList = PrimaryAPIGraphBuilder.buildPrimaryAPIUsageGraphs(projectAnalysis, ifd);
+        List<PrimaryAPIUsageGraph> primaryAPIUsageGraphList = PrimaryAPIGraphBuilder.buildPrimaryAPIUsageGraphs(projectAnalysis, ifd, validatePAUGs);
 
         CommonConstants.LOGGER.log( Level.FINE, "\tCreating GRAAM(s) for created PrimaryAPIUsageGraphs" );
 

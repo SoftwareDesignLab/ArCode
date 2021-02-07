@@ -20,6 +20,7 @@ import java.util.stream.StreamSupport;
 
 public class GRAAMBuilder {
     static final String SERIALIZED_GRAAM_EXTENSION = ".srz";
+    static final String DOT_GRAPH_EXTENSION = ".dot";
     static Set<String> COLLECTION_CLASS_NAMES = new HashSet<>();
     static{
         COLLECTION_CLASS_NAMES.add( "Ljava/util/Set" );
@@ -549,6 +550,29 @@ public class GRAAMBuilder {
         });
 
     }
+
+    public static void saveGRAAMsDotGraph(List<GRAAM> graams, String GRAAMsDotGraphFolder) {
+        Set<String> createdFiles = new HashSet<>();
+        File folder = new File(GRAAMsDotGraphFolder);
+        if (!folder.exists())
+            folder.mkdir();
+
+        graams.forEach(graam -> {
+            String fileName = generateUniqueFileName(graam.getTitle(), createdFiles);
+            createdFiles.add(fileName);
+
+            String filePath = GRAAMsDotGraphFolder + "/" + fileName + DOT_GRAPH_EXTENSION;
+            try {
+                FileWriter fileWriter = new FileWriter( filePath );
+                fileWriter.write( (new GRAAMVisualizer( graam )).dotOutput().toString() );
+                fileWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+    }
+
 
     static String generateUniqueFileName(String suggestedFileName, Set<String> takenFileNames) {
         String generatedFileName = suggestedFileName;

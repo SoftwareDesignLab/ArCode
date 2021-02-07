@@ -47,7 +47,7 @@ public abstract class DirectedGraphVisualizer<T extends DirectedGraphNode, E ext
     /** @return StringBuffer holding dot output representing G */
     public StringBuilder dotOutput() {
         StringBuilder result = new StringBuilder("digraph \"DirectedGraph\" {\n");
-        result.append("graph [label=\"" + directedGraph.getTitle() + "\"];");
+        result.append("graph [label=\"" + getGraphTitle(directedGraph) + "\"];");
 
         String fontsizeStr = "fontsize=" + fontSize;
         String fontcolorStr = (fontColor != null) ? ",fontcolor=" + fontColor : "";
@@ -78,7 +78,7 @@ public abstract class DirectedGraphVisualizer<T extends DirectedGraphNode, E ext
         return result;
     }
 
-    void addNode(T graphNode, StringBuilder stringBuilder ){
+    protected void addNode(T graphNode, StringBuilder stringBuilder ){
         stringBuilder.append( "\t" );
         stringBuilder.append( "\"" + getUniqueGraphNodeTitle( graphNode ) + "\"" );
         stringBuilder.append( "[fillcolor =\"" + getNodeColor( graphNode ) + "\", shape=\"" + getNodeShape( graphNode )
@@ -86,7 +86,7 @@ public abstract class DirectedGraphVisualizer<T extends DirectedGraphNode, E ext
         stringBuilder.append( "\n" );
     }
 
-    void addEdge(T fromGraphNode, T toGraphNode, E directedGraphEdgeType, G edge, StringBuilder stringBuilder ){
+    protected void addEdge(T fromGraphNode, T toGraphNode, E directedGraphEdgeType, G edge, StringBuilder stringBuilder ){
         String fromNodeUniqueTitle = getUniqueGraphNodeTitle( fromGraphNode);
         String toNodeUniqueTitle = getUniqueGraphNodeTitle( toGraphNode );
         String style = getEdgeStyle(directedGraphEdgeType);
@@ -95,7 +95,7 @@ public abstract class DirectedGraphVisualizer<T extends DirectedGraphNode, E ext
         stringBuilder.append( "\t" );
         stringBuilder.append( "\"" + fromNodeUniqueTitle  +
                 "\"" + " -> " + "\"" + toNodeUniqueTitle + "\"" );
-        stringBuilder.append( "[color=\"" + color + "\",style=" + style + ", label=\"" + edge.getTitle() + "\" ];\n" );
+        stringBuilder.append( "[color=\"" + color + "\",style=" + style + ", label=\"" + getEdgeTitle(edge) + "\" ];\n" );
     }
 
     protected abstract String getEdgeColor(E edgeType);
@@ -114,5 +114,11 @@ public abstract class DirectedGraphVisualizer<T extends DirectedGraphNode, E ext
         return "black";
     }
 
+    protected String getEdgeTitle( G edge ){
+        return edge.getTitle();
+    }
 
+    protected String getGraphTitle(DirectedGraph<T, E, G> directedGraph){
+        return directedGraph.getTitle();
+    }
 }
