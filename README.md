@@ -56,7 +56,7 @@ After running ArCode, four folders in training as well as testing projects' dire
 ArCode uses GRAAMs generated for training programs to create the FSpec of JAAS. Then, it generates API misuses from GRAAMs of test data set. Finally, it provides recommendations for generated test cases and computes the accuracy of top-K recommendations. 
 
 # Tutorial
-Please click [here](https://youtu.be/ADQ_nXsKxl8) to watch a tutorial on ArCode.
+Please click [here](https://youtu.be/f1AmjF3uIVw) to watch a tutorial on ArCode.
 
 # Contact
 Please do not hasitate to reach out to us should you have any question about ArCode. You may get in contact with us throught as8308 at rit dot edu.
