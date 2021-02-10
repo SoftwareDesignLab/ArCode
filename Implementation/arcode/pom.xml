@@ -78,17 +78,24 @@
             <version>3.13.100</version>
         </dependency>
 
-        <!-- MagpieBridge -->
+<!--        &lt;!&ndash; MagpieBridge &ndash;&gt;
         <dependency>
             <groupId>magpiebridge</groupId>
             <artifactId>magpiebridge</artifactId>
             <version>0.0.9</version>
         </dependency>
-        <!-- IRConverter -->
+        &lt;!&ndash; IRConverter &ndash;&gt;
         <dependency>
             <groupId>magpiebridge</groupId>
             <artifactId>irconverter</artifactId>
             <version>0.1.6</version>
+        </dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/com.github.magpiebridge/magpiebridge -->
+        <dependency>
+            <groupId>com.github.magpiebridge</groupId>
+            <artifactId>magpiebridge</artifactId>
+            <version>0.1.0</version>
         </dependency>
 
         <dependency>
