@@ -51,6 +51,8 @@ If you faced out of memory or heap-related exceptiones, you may need to increase
 ```
 -Xms512M -Xmx512M
 ```
+While running the tool, there might be some WARNING longs in the console. As long as you are not receiving SEVERE, ERROR, or Exception messages you should be fine.
+
 After running ArCode, four folders in training as well as testing projects' directories will be created.
 * *GRAAMsDotGraph:* Contains generated GRAAMs for each project in the format of [dot graph](https://en.wikipedia.org/wiki/DOT_(graph_description_language)). To visualize each GRAAM, you can use a dot graph visualizer tool. For instance, one can copy-paste content of a file in *GRAAMsDotGraph* folder in the textbox area in [Webgraphviz](http://www.webgraphviz.com/) website and click the "Generate Graph" button.
 * *PAUGsDotGraph:* Contains generated Primary API Usage Graphs for each project in the format of [dot graph](https://en.wikipedia.org/wiki/DOT_(graph_description_language)). To visualize each Primary API Usage Graph, you can use a dot graph visualizer tool as mentioned before.
