@@ -118,7 +118,7 @@ public abstract class ProjectAnalyzer {
     }
     protected List<String> getPrimordialJarFilePaths(){
         List<String> primordialJarFilePaths = new ArrayList<>( Arrays.asList( WalaProperties.getJ2SEJarFiles() ) ) ;
-        primordialJarFilePaths.add( "/Users/as8308/Desktop/Ali/RIT/My Drive/Research/Projects/NewSpecMiner/Implementation/specminer/config/javaee-api-8.0.jar" );
+//        primordialJarFilePaths.add( "/Users/as8308/Desktop/Ali/RIT/My Drive/Research/Projects/NewSpecMiner/Implementation/specminer/config/javaee-api-8.0.jar" );
 //        primordialJarFilePaths.add( "/Users/ali/Academic/RIT/Research/Projects/NewSpecMiner/Implementation/config/javaee-api-8.0.1.jar" );
 //        primordialJarFilePaths.add( "/Library/Java/JavaVirtualMachines/jdk1.8.0_251.jdk/Contents/Home/jre/lib/rt.jar" );
 
