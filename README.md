@@ -47,6 +47,10 @@ java -jar ARCODE_JAR_FILE -framework FRAMEWORK_OF_INTEREST -fspecOutputPath PATH
 - **PATH_TO_FRAMEWORK_JAR_FILE:** Path to jar file of the framework of interest.
 - **PACKAGE_NAME_OF_FRAMEWORK:** Since there might be more than one framework in a jar file, we introduce the packaging of the framework through this property.
 
+If you faced out of memory or heap-related exceptiones, you may need to increase the run-time memory by adding the following option to the above command:
+```
+-Xms512M -Xmx512M
+```
 After running ArCode, four folders in training as well as testing projects' directories will be created.
 * *GRAAMsDotGraph:* Contains generated GRAAMs for each project in the format of [dot graph](https://en.wikipedia.org/wiki/DOT_(graph_description_language)). To visualize each GRAAM, you can use a dot graph visualizer tool. For instance, one can copy-paste content of a file in *GRAAMsDotGraph* folder in the textbox area in [Webgraphviz](http://www.webgraphviz.com/) website and click the "Generate Graph" button.
 * *PAUGsDotGraph:* Contains generated Primary API Usage Graphs for each project in the format of [dot graph](https://en.wikipedia.org/wiki/DOT_(graph_description_language)). To visualize each Primary API Usage Graph, you can use a dot graph visualizer tool as mentioned before.
