@@ -11,15 +11,12 @@ There are three main inputs to ArCode:
 ArCode leverages static analysis techniques to extract some facts about API dependencies and usage constraint from the framework. It then analyzes programs in the training repository to identify programs that are not violating API usage constraint. Mining these programs, it builds an API usage model, called Framework API Specification (FSpec) model. Finally, it analyzes testing projects to find how APIs are being used in them and provides recommendations on how to fix or complete (if needed) those programs.
 
 If you are interested, you may find more details about ArCode from its [technical paper](https://a-shokri.github.io/assets/Ali%20Shokri-ArCode-ICSA2021-Accepted.pdf).
-A link to the presentation of this paper will be uploaded shortly.
-
-The source code and related documentation will be uploaded shortly.
 
 # Cite the research paper
 To use ArCode in your research papers, please cite it as: BibTex
 
 # Obtaining ArCode tool
-In this section, we provide a we provide a step-by-step instruction to walk you through the process of building and using ArCode.
+In this section, we provide a step-by-step instruction to walk you through the process of building and using ArCode.
 
 ## Use a released version
 When we reach a stable version, we build the project and release it as a jar file. You can easily download the latest release from [here](../../releases/). 
