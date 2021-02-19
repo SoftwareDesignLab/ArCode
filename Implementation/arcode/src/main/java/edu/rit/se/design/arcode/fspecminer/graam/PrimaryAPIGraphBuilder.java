@@ -171,7 +171,7 @@ public class PrimaryAPIGraphBuilder {
             String fileName = generateUniqueFileName(pag.getTitle(), createdFiles);
             createdFiles.add(fileName);
 
-            String filePath = serializedPAGsFolder + "/" + fileName + SERIALIZED_PRIMARY_API_GRAPH_EXTENSION;
+            String filePath = serializedPAGsFolder + File.separator + fileName + SERIALIZED_PRIMARY_API_GRAPH_EXTENSION;
             FileOutputStream serializedGraspFile = null;
             try {
                 serializedGraspFile = new FileOutputStream(filePath);
@@ -196,7 +196,7 @@ public class PrimaryAPIGraphBuilder {
             String fileName = generateUniqueFileName(paug.getTitle(), createdFiles);
             createdFiles.add(fileName);
 
-            String filePath = paugDotGraphFolder + "/" + fileName + DOT_GRAPH_EXTENSION;
+            String filePath = paugDotGraphFolder + File.separator + fileName + DOT_GRAPH_EXTENSION;
             try {
                 FileWriter fileWriter = new FileWriter( filePath );
                 fileWriter.write( (new PrimaryAPIUsageGraphVisualizer( paug )).dotOutput().toString() );

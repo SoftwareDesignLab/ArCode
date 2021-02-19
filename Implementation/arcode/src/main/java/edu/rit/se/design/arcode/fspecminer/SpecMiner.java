@@ -45,10 +45,10 @@ public class SpecMiner {
         this.frameworkJarPath = frameworkJarPath;
         this.frameworkPackage = frameworkPackage;
         this.minerType = MinerType.valueOf( minerType );
-        this.serializedGRAAMsFolder = projectsFolder + "/" + "SerializedGRAAMs";
-        this.serializedPAGsFolder = projectsFolder + "/" + "SerializedPAUGs";
-        this.graamsDotGraphFolder = projectsFolder + "/" + "GRAAMsDotGraph";
-        this.paugsDotGraphFolder = projectsFolder + "/" + "PAUGsDotGraph";
+        this.serializedGRAAMsFolder = projectsFolder + File.separator + "SerializedGRAAMs";
+        this.serializedPAGsFolder = projectsFolder + File.separator + "SerializedPAUGs";
+        this.graamsDotGraphFolder = projectsFolder + File.separator + "GRAAMsDotGraph";
+        this.paugsDotGraphFolder = projectsFolder + File.separator + "PAUGsDotGraph";
     }
 
     public void createGraamsForProjects(IFD ifd, Iterable<String> projects, boolean validatePAUGs) throws Exception {

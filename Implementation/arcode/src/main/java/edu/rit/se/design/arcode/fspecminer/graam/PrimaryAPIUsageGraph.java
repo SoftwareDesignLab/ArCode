@@ -4,6 +4,9 @@ import edu.rit.se.design.arcode.fspecminer.analysis.ProjectInfo;
 import edu.rit.se.design.arcode.fspecminer.util.graph.DirectedGraph;
 import edu.rit.se.design.arcode.fspecminer.util.graph.DirectedGraphNode;
 
+import java.io.File;
+import java.util.regex.Pattern;
+
 /**
  * @author Ali Shokri (as8308@rit.edu)
  */
@@ -34,7 +37,7 @@ public class PrimaryAPIUsageGraph extends DirectedGraph<DirectedGraphNode, Prima
 
     @Override
     public String getTitle() {
-        String[] splitedPath = getProjectInfo().getPath().split( "/" );
+        String[] splitedPath = getProjectInfo().getPath().split( Pattern.quote(File.separator) );
         return splitedPath[ splitedPath.length - 1 ] ;
     }
 }

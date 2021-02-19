@@ -5,7 +5,9 @@ import edu.rit.se.design.arcode.fspecminer.analysis.ProjectInfo;
 import edu.rit.se.design.arcode.fspecminer.util.graph.DirectedGraph;
 import edu.rit.se.design.arcode.fspecminer.util.graph.DirectedGraphNode;
 
+import java.io.File;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -51,7 +53,7 @@ public class GRAAM extends DirectedGraph<DirectedGraphNode, GRAAMEdgeType, GRAAM
 
     @Override
     public String getTitle() {
-        String[] splitedPath = getProjectInfo().getPath().split( "/" );
+        String[] splitedPath = getProjectInfo().getPath().split( Pattern.quote(File.separator) );
         return splitedPath[ splitedPath.length - 1 ] ;
     }
 

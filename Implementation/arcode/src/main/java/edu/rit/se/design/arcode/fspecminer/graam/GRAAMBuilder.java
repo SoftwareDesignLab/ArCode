@@ -535,7 +535,7 @@ public class GRAAMBuilder {
             String fileName = generateUniqueFileName(graam.getTitle(), createdFiles);
             createdFiles.add(fileName);
 
-            String filePath = serializedGRAAMsFolder + "/" + fileName + SERIALIZED_GRAAM_EXTENSION;
+            String filePath = serializedGRAAMsFolder + File.separator + fileName + SERIALIZED_GRAAM_EXTENSION;
             FileOutputStream serializedGraspFile = null;
             try {
                 serializedGraspFile = new FileOutputStream(filePath);
@@ -561,7 +561,7 @@ public class GRAAMBuilder {
             String fileName = generateUniqueFileName(graam.getTitle(), createdFiles);
             createdFiles.add(fileName);
 
-            String filePath = GRAAMsDotGraphFolder + "/" + fileName + DOT_GRAPH_EXTENSION;
+            String filePath = GRAAMsDotGraphFolder + File.separator + fileName + DOT_GRAPH_EXTENSION;
             try {
                 FileWriter fileWriter = new FileWriter( filePath );
                 fileWriter.write( (new GRAAMVisualizer( graam )).dotOutput().toString() );

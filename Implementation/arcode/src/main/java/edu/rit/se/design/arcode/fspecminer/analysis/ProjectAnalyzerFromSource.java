@@ -191,7 +191,7 @@ public class ProjectAnalyzerFromSource extends ProjectAnalyzer {
         return analysisScope;
     }
     List<String> getAllDependencies( String projectFolder ) throws Throwable {
-        Path dependenciesFilePath = Paths.get( projectFolder + "/" + DEPENDENCIES_FILE_NAME );
+        Path dependenciesFilePath = Paths.get( projectFolder + File.separator + DEPENDENCIES_FILE_NAME );
 
         if( Files.exists( dependenciesFilePath ) )
             return Files.readAllLines( dependenciesFilePath );
