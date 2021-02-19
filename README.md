@@ -44,7 +44,7 @@ java -jar ARCODE_JAR_FILE -framework FRAMEWORK_OF_INTEREST -fspecOutputPath PATH
 - **PATH_TO_FRAMEWORK_JAR_FILE:** Path to jar file of the framework of interest.
 - **PACKAGE_NAME_OF_FRAMEWORK:** Since there might be more than one framework in a jar file, we introduce the packaging of the framework through this property. For instance, in case of JAAS framework, this package would be javax/security/auth. Also, framework package for RMI would be java/rmi.
 
-## Running the tool on a Windoes-based machine
+## Running the tool on a Windows-based machine
 Assuming that you are using a Windows-based machine, here are the steps you need to follow to be able to run the tool for JAAS framework:
 1. Cloning the source code in a path (e.g. on drive D):
 ```
