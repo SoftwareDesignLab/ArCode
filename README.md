@@ -10,7 +10,7 @@ There are three main inputs to ArCode:
 
 ArCode leverages static analysis techniques to extract some facts about API dependencies and usage constraint from the framework. It then analyzes programs in the training repository to identify programs that are not violating API usage constraint. Mining these programs, it builds an API usage model, called Framework API Specification (FSpec) model. Finally, it analyzes testing projects to find how APIs are being used in them and provides recommendations on how to fix or complete (if needed) those programs.
 
-If you are interested, you may find more details about ArCode from its [technical paper](https://a-shokri.github.io/assets/Ali%20Shokri-ArCode-ICSA2021-Accepted.pdf).
+If you are interested, you may find more details about ArCode from its [technical paper](https://arxiv.org/abs/2102.08372).
 
 # Cite the research paper
 To use ArCode in your research papers, please cite it as: BibTex
@@ -36,7 +36,7 @@ For running ArCode, you may use the following template in the command line. In t
 java -jar ARCODE_JAR_FILE -framework FRAMEWORK_OF_INTEREST -fspecOutputPath PATH_TO_FSPEC_OUTPUT -trainProjectsPath PATH_TO_TRAINING_PROJECTS -testProjectsPath PATH_TO_TESTING_PROJECTS -exclusionFilePath PATH_TO_EXCLUSION_FILE -frameworkJarPath PATH_TO_FRAMEWORK_JAR_FILE -frameworkPackage PACKAGE_NAME_OF_FRAMEWORK
 ```
 - **ARCODE_JAR_FILE:** Path to ArCode jar file that you downloaded from [releases](../../releases/) or built from ArCode source code using Maven.
-- **FRAMEWORK_OF_INTEREST:** The framework that you would like to extract and create a model of its API usages in training projects. This model is called Framework API Specification model (FSpec). ArCode also performs static analysis to find dependencies between APIs inside the framework jar file and creates an Inter-framewrok Dependency model (IFD). You may find more details about the approach from ArCode [paper](https://a-shokri.github.io/assets/Ali%20Shokri-ArCode-ICSA2021-Accepted.pdf).
+- **FRAMEWORK_OF_INTEREST:** The framework that you would like to extract and create a model of its API usages in training projects. This model is called Framework API Specification model (FSpec). ArCode also performs static analysis to find dependencies between APIs inside the framework jar file and creates an Inter-framewrok Dependency model (IFD). You may find more details about the approach from ArCode [paper](https://arxiv.org/abs/2102.08372).
 - **PATH_TO_FSPEC_OUTPUT:** Created FSpec will be serialized and saved in this directory. ArCode will later restore this FSpec and use it in the recommendation phase.
 - **PATH_TO_TRAINING_PROJECTS:** Path to the bytecode (jar files) of the training projects that are incorporating the framework of interest. ArCode analyzes these programs to create a Graph-based API Usage Model (GRAAM) for each program. Then, performing graph-based operations, it creates the framework's FSpec. 
 - **PATH_TO_TESTING_PROJECTS:** Path to the bytecode (jar files) of the testing projects that are incorporating the framework of interest. ArCode analyzes these programs to create a Graph-based API Usage Model (GRAAM) for each program. The, leveraging the previously created FSpec, it identifies API misuses or APIs that are needed to be added to the program to make the program a correct implementation of an architectural tactic or a pattern.
