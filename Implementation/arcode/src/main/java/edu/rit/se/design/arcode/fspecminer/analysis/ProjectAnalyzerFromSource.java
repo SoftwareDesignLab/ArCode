@@ -186,6 +186,7 @@ public class ProjectAnalyzerFromSource extends ProjectAnalyzer {
         for (String primordialJarPath : new HashSet<>(primordialJarPaths))
             analysisScope.addToScope( ClassLoaderReference.Primordial, new JarFile( primordialJarPath ) );
 
+
         // add source folders (if any) libraries to scope
         analysisScope.addToScope(JavaSourceAnalysisScope.SOURCE, new SourceDirectoryTreeModule(new File(getPathToProgram())));
         return analysisScope;
