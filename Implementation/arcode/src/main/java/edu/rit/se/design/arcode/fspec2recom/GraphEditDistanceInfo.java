@@ -1,14 +1,7 @@
 package edu.rit.se.design.arcode.fspec2recom;
 
-import com.ibm.wala.ipa.cha.ClassHierarchyException;
-import edu.rit.se.design.arcode.fspec2code.ClassHierarchyUtil;
-import edu.rit.se.design.arcode.fspec2code.CodeGenerationException;
-import edu.rit.se.design.arcode.fspec2code.CodeGenerator;
-import edu.rit.se.design.arcode.fspecminer.fspec.FSpecEndNode;
-import edu.rit.se.design.arcode.fspecminer.fspec.FSpecNode;
 import edu.rit.se.design.arcode.fspecminer.graam.GRAAM;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +38,7 @@ public class GraphEditDistanceInfo {
         return operationSequence;
     }
 
+/*
     public String generateCode() throws ClassHierarchyException, IOException, CodeGenerationException {
         String classHierarchyExclusionFile = "/Users/ali/Academic/RIT/Research/Projects/NewSpecMiner/Implementation/specminer/config/JAASJavaExclusions.txt";
         String frameworkJarFile = "/Users/ali/Academic/RIT/Research/Projects/SpecMiner/Implementation/SpecMiner/config/JREs/jre1.8.0_131/lib/rt.jar";
@@ -62,5 +56,9 @@ public class GraphEditDistanceInfo {
 
         return codeGenerator.generateCode( "CodeSuggestion" , distSubFSpec, fSpecEndNode).toString();
     }
+*/
 
+    public SubFSpec getDistSubFSpec() {
+        return distSubFSpec;
+    }
 }

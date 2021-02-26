@@ -3,6 +3,7 @@ package edu.rit.se.design.arcode.fspec2code;
 import edu.rit.se.design.arcode.fspecminer.fspec.FSpecAPICallNode;
 import edu.rit.se.design.arcode.fspecminer.fspec.FSpecAPIInstantiationNode;
 import edu.rit.se.design.arcode.fspecminer.fspec.FSpecNode;
+import edu.rit.se.design.arcode.fspecminer.graam.FrameworkRelatedNode;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,6 +30,10 @@ public class SymbolTable {
         return createSymbolForAllObjects( fSpecNode );
     }
 
+    public String createSymbol( FrameworkRelatedNode graamNode ){
+        return createSymbolForAllObjects( graamNode );
+    }
+
     public String createSymbol( String classFullName ){
         return createSymbolForAllObjects( new TypeHolder( classFullName ) );
     }
@@ -51,28 +56,6 @@ public class SymbolTable {
     }
 
 
-    class TypeHolder{
-        String type;
-
-        public TypeHolder(String type) {
-            this.type = type;
-        }
-
-        public String getType() {
-/*
-            if( type.equals("I") )
-                return "int";
-            if( type.equals("B") )
-                return "boolean";
-
-*/
-            return type;
-        }
-
-        public String getSimpleName(){
-            return getType().replaceAll(".*\\.", "").replaceAll("\\$", ".");
-        }
-    }
 
     String generateVarName( Object object ){
         //TODO: refactor this part. It should go inside each FSpecNodeCodeGenerator
@@ -81,7 +64,8 @@ public class SymbolTable {
             varName = ((FSpecAPICallNode) object).getReturnType().replaceAll(".*\\/", "");
         if( object instanceof FSpecAPIInstantiationNode)
             varName = ((FSpecAPIInstantiationNode) object).getSimpleClassName();
-
+        if( object instanceof FrameworkRelatedNode)
+            varName = ((FrameworkRelatedNode) object).getSimpleClassName();
         if( /*!(object instanceof edu.rit.se.design.specminer.fspec.FSpecAPINode)*/ varName == null && object instanceof TypeHolder )
             varName = ((TypeHolder)object).getSimpleName();
         if(varName.equals("Class"))

@@ -17,8 +17,12 @@ import jdk.internal.org.objectweb.asm.tree.ClassNode;
 import jdk.internal.org.objectweb.asm.tree.MethodNode;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashSet;
@@ -47,8 +51,8 @@ public class ProjectAnalyzerFromJar extends ProjectAnalyzer {
     protected AnalysisOptions createAnalysisOptions(AnalysisScope analysisScope, IClassHierarchy classHierarchy, Iterable<Entrypoint> distinctEntryPoints) {
         AnalysisOptions options = new AnalysisOptions();
         options.setReflectionOptions(AnalysisOptions.ReflectionOptions.FULL);
-        options.setEntrypoints( distinctEntryPoints );
-        options.setAnalysisScope( analysisScope );
+        options.setEntrypoints(distinctEntryPoints);
+        options.setAnalysisScope(analysisScope);
         // TODO: Check the following items again
 //        options.setSelector(new ClassHierarchyMethodTargetSelector( classHierarchy ));
 //        Util.addDefaultSelectors(options, classHierarchy);
@@ -65,10 +69,10 @@ public class ProjectAnalyzerFromJar extends ProjectAnalyzer {
     @Override
     protected CallGraph createCallGraphForEntrypointExtraction(IClassHierarchy classHierarchy, AnalysisScope analysisScope, IAnalysisCacheView cache) throws CallGraphBuilderCancelException, IOException, FrameworkUtilityNotFoundException {
         List<Entrypoint> frameworkBasedEntrypoints = StreamSupport.stream(
-                getAllPossibleEntrypoints( analysisScope, classHierarchy ).spliterator(), false ).filter(
+                getAllPossibleEntrypoints(analysisScope, classHierarchy).spliterator(), false).filter(
                 entrypoint -> {
                     try {
-                        return FrameworkUtilsFactory.getFrameworkUtils( framework ).isFrameworkEntrypoint( entrypoint );
+                        return FrameworkUtilsFactory.getFrameworkUtils(framework).isFrameworkEntrypoint(entrypoint);
                     } catch (FrameworkUtilityNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -82,15 +86,15 @@ public class ProjectAnalyzerFromJar extends ProjectAnalyzer {
         AnalysisOptions options = new AnalysisOptions();
         options.setReflectionOptions(AnalysisOptions.ReflectionOptions.NONE);
         options.setEntrypoints(frameworkBasedEntrypoints);
-        options.setAnalysisScope( analysisScope );
-        options.setSelector(new ClassHierarchyMethodTargetSelector( classHierarchy ));
+        options.setAnalysisScope(analysisScope);
+        options.setSelector(new ClassHierarchyMethodTargetSelector(classHierarchy));
 
         Util.addDefaultSelectors(options, classHierarchy);
         Util.addDefaultBypassLogic(options, analysisScope, Util.class.getClassLoader(), classHierarchy);
 
 
         com.ibm.wala.ipa.callgraph.CallGraphBuilder temporaryCGBuilder =
-                Util.makeZeroCFABuilder( Language.JAVA, options, cache, classHierarchy, analysisScope);
+                Util.makeZeroCFABuilder(Language.JAVA, options, cache, classHierarchy, analysisScope);
 //        ZeroOneContainerCFABuilderFactory factory = new ZeroOneContainerCFABuilderFactory();
 //        CallGraph temporaryCG = factory.make( options, cache, classHierarchy, analysisScope ).makeCallGraph( options, null );
         CallGraph temporaryCG = temporaryCGBuilder.makeCallGraph(options, null);
@@ -108,7 +112,7 @@ public class ProjectAnalyzerFromJar extends ProjectAnalyzer {
 
     @Override
     protected Iterable<Entrypoint> getAllPossibleEntrypoints(AnalysisScope analysisScope, IClassHierarchy classHierarchy) throws FrameworkUtilityNotFoundException, IOException {
-        return findEntrypoints( classHierarchy, getPathToProgram() );
+        return findEntrypoints(classHierarchy, getPathToProgram());
     }
 
 
@@ -124,9 +128,9 @@ public class ProjectAnalyzerFromJar extends ProjectAnalyzer {
         Enumeration<JarEntry> entries = jarFile.entries();
         List<JarEntry> entryList = new ArrayList<>();
         while (entries.hasMoreElements())
-            entryList.add( entries.nextElement() );
+            entryList.add(entries.nextElement());
 
-        for( JarEntry entry: entryList ) {
+        for (JarEntry entry : entryList) {
 
             String entryName = entry.getName();
             if (entryName.endsWith(".class")) {
@@ -138,16 +142,16 @@ public class ProjectAnalyzerFromJar extends ProjectAnalyzer {
                 classNode.methods.forEach((MethodNode method) -> {
 //                    if( isAnEntrypoint( cha, classNode, method ) )
                     try {
-                        IClass applicationIClass = WalaUtils.getIClassForApplicationClassNode( cha, classNode );
-                        if( applicationIClass == null )
+                        IClass applicationIClass = WalaUtils.getIClassForApplicationClassNode(cha, classNode);
+                        if (applicationIClass == null)
                             return;
-                        IMethod applicationIMethod = WalaUtils.getIMethod( applicationIClass, method );
-                        if( applicationIMethod == null )
+                        IMethod applicationIMethod = WalaUtils.getIMethod(applicationIClass, method);
+                        if (applicationIMethod == null)
                             // TODO: sometimes lambda methods are compiled with a name but are loaded in the ClassHierarchy with different names (e.g. labda$0 and lambda$0$servide)
                             return;
                         Entrypoint entrypoint = WalaUtils.convertToEntrypoint(cha, applicationIMethod);
-                        if( FrameworkUtilsFactory.getFrameworkUtils( getFramework() ).isFrameworkEntrypoint( entrypoint ) )
-                            result.add( entrypoint );
+                        if (FrameworkUtilsFactory.getFrameworkUtils(getFramework()).isFrameworkEntrypoint(entrypoint))
+                            result.add(entrypoint);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -183,13 +187,17 @@ public class ProjectAnalyzerFromJar extends ProjectAnalyzer {
                 });*/
             }
         }
-        return new ArrayList<>( result );
+        return new ArrayList<>(result);
     }
 
     @Override
     protected AnalysisScope createAnalysisScope() throws IOException {
-        File exclusionFile = new File( getExclusionFile() );
+        File exclusionFile = new File(getExclusionFile());
         AnalysisScope analysisScope = AnalysisScopeReader.makeJavaBinaryAnalysisScope(getPathToProgram(), exclusionFile);
+
+        AnalysisScope primordialScope = AnalysisScopeReader.makePrimordialScope(exclusionFile);
+
+        //Commented by Ali: It seems that WALA is already adding WalaProperties.getJ2SEJarFiles() as Primordial. So we do not need to do that.
         List<String> primordialJarPaths = getPrimordialJarFilePaths();
 
 //        String jdkLibDirPath = "/Library/Java/JavaVirtualMachines/jdk1.8.0_251.jdk/Contents/Home";
@@ -200,7 +208,20 @@ public class ProjectAnalyzerFromJar extends ProjectAnalyzer {
 
         // add primordial libraries to scope
         for (String primordialJarPath : new HashSet<>(primordialJarPaths))
-            analysisScope.addToScope( ClassLoaderReference.Primordial, new JarFile( primordialJarPath ) );
+            primordialScope.addToScope( ClassLoaderReference.Primordial, new JarFile( primordialJarPath ) );
+
+        // TODO: This is an ad hoc fix for ArCodePlugin. It should be fixed in the future
+
+        Path temp = Files.createTempFile("resource-", ".jar");
+        Files.copy(this.getClass().getClassLoader().getResourceAsStream("javaee-api-8.0.jar"), temp, StandardCopyOption.REPLACE_EXISTING);
+        primordialScope.addToScope( ClassLoaderReference.Primordial, new JarFile( temp.toFile() ) );
+
+        Path temp2 = Files.createTempFile("resource-", ".jar");
+        Files.copy(this.getClass().getClassLoader().getResourceAsStream("java-rt.jar"), temp2, StandardCopyOption.REPLACE_EXISTING);
+        primordialScope.addToScope( ClassLoaderReference.Primordial, new JarFile( temp2.toFile() ) );
+
+        analysisScope.addToScope( primordialScope );
+
 
         // add dependency folder (if exists) to scope
 //        AnalysisScope dependenciesScope = AnalysisScopeReader.makeJavaBinaryAnalysisScope(projectDir.getParent() + "/dependencies" , exFile);

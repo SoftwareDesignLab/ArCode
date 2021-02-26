@@ -1,5 +1,7 @@
-package edu.rit.se.design.arcode.fspec2code;
+package edu.rit.se.design.arcode.fspec2code.subfspec;
 
+import edu.rit.se.design.arcode.fspec2code.ClassHierarchyUtil;
+import edu.rit.se.design.arcode.fspec2code.SymbolTable;
 import edu.rit.se.design.arcode.fspecminer.fspec.FSpec;
 import edu.rit.se.design.arcode.fspecminer.fspec.FSpecAPIInstantiationNode;
 import edu.rit.se.design.arcode.fspecminer.fspec.FSpecNode;

@@ -21,7 +21,9 @@ import java.util.logging.Level;
 
 public class FSpec2Recom {
 
-    public static void fspec2Recom( FSpec trainProjectsFSpec, String serializedTestGRAAMsFolderPath, int rankingCutoff ) throws IOException, ClassNotFoundException {
+    public static Map<GRAAM, List<GraphEditDistanceInfo>> fspec2Recom( FSpec trainProjectsFSpec, String serializedTestGRAAMsFolderPath, int rankingCutoff ) throws IOException, ClassNotFoundException {
+
+        Map<GRAAM, List<GraphEditDistanceInfo>> recommendationMap = new HashMap<>();
 
         CommonConstants.LOGGER.log( Level.INFO, "Finding API misuses and recommendations for GRAAMs in folder \"" + serializedTestGRAAMsFolderPath + "\"...");
         CommonConstants.LOGGER.log( Level.INFO, "Recommendation cutoff: " + rankingCutoff);
@@ -34,7 +36,9 @@ public class FSpec2Recom {
             System.out.println( "GRAAM title: " + testGraam.getTitle() + ""  );
             System.out.println( "GRAAM dot graph: \n" + new GRAAMVisualizer( testGraam ).dotOutput() + "\n" );
 
-            List<GraphEditDistanceInfo> rankedRecommendations = Recommender.findRankedRecommendations( testGraam, trainProjectsFSpec );
+            List<GraphEditDistanceInfo> rankedRecommendations = fspec2Recom( trainProjectsFSpec, testGraam, rankingCutoff );
+
+            recommendationMap.put( testGraam, rankedRecommendations );
 
             if ( rankedRecommendations.get(0).getDistance() == 0 ) {
                 System.out.println("This GRAAM follows a correct API usage. No recommendation needed.");
@@ -44,9 +48,17 @@ public class FSpec2Recom {
             }
 
             System.out.println("This GRAAM does not follow a correct API usage. Please find recommendations as below:");
-            for ( int i = 0; i < Math.min(rankingCutoff, rankedRecommendations.size()); i++ )
+            for ( int i = 0; i < rankedRecommendations.size(); i++ )
                 System.out.println( "Recommendation #" + (i + 1) + ":\n" +
                 new SubFSpecVisualizer( rankedRecommendations.get(i).distSubFSpec ).dotOutput() );
         } );
+
+        return recommendationMap;
     }
+
+    public static List<GraphEditDistanceInfo> fspec2Recom( FSpec trainProjectsFSpec, GRAAM testGraam, int rankingCutoff ){
+        List<GraphEditDistanceInfo> rankedRecommendations = Recommender.findRankedRecommendations( testGraam, trainProjectsFSpec );
+        return rankedRecommendations.subList( 0, Math.min( rankingCutoff, rankedRecommendations.size() ) );
+    }
+
 }

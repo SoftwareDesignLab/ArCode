@@ -2,6 +2,8 @@ package edu.rit.se.design.arcode.fspecminer.graam;
 
 import edu.rit.se.design.arcode.fspecminer.util.graph.DirectedGraphNode;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -82,4 +84,42 @@ public class FrameworkRelatedNode implements DirectedGraphNode {
     public FrameworkRelatedNode clone() {
         return new FrameworkRelatedNode( statementRepresentation );
     }
+
+    public String getFullClassName() {
+        if( isInitNode() )
+            return getFrameworkRelatedClass();
+        if( isNormalMethodCall() )
+            return getFrameworkRelatedMethod().substring( getFrameworkRelatedMethod().indexOf( ")" ) + 1).replaceAll(";", "");
+        return null;
+    }
+    public String getSimpleClassName(){
+        if( isInitNode() )
+            return getFullClassName().replaceAll(".*\\/", "");;
+        if( isNormalMethodCall() )
+            return getFullClassName().replaceAll(".*\\/", "");
+        return null;
+    }
+    public List<String> getArgumentTypes() {
+        List<String> argumentTypes = new ArrayList<>();
+        String[] candidateArguments = getFrameworkRelatedMethod().substring( getFrameworkRelatedMethod().indexOf("(") + 1, getFrameworkRelatedMethod().indexOf( ")" ) ).split(";");
+        for (String candidateArgument : candidateArguments) {
+            if( candidateArgument.length() > 0 )
+                argumentTypes.add( candidateArgument );
+        }
+        return argumentTypes;
+    }
+
+    public String getReturnType(){
+        return getFrameworkRelatedMethod().substring( getFrameworkRelatedMethod().indexOf( ")" ) + 1).replaceAll(";", "");
+    }
+
+    public String getSimpleReturnType(){
+        boolean isArray = getReturnType().startsWith("[");
+        return getReturnType().replaceAll(".*\\/", "") + (isArray? "[]" : "");
+    }
+
+    public String getMethodName(){
+        return getFrameworkRelatedMethod().substring(0, getFrameworkRelatedMethod().indexOf("("));
+    }
+
 }
