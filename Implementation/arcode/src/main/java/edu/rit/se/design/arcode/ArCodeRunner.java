@@ -88,8 +88,8 @@ public class ArCodeRunner {
         String frameworkPackage = programArguments.get("frameworkPackage");
         String mode = programArguments.get("mode");
         int recommendationCutOff = programArguments.get("recommendationCutOff") != null ? Integer.parseInt( programArguments.get("recommendationCutOff") ) : 10;
-        boolean mineTrainFromScratch = programArguments.get("mineTrainFromScratch") != null ? Boolean.getBoolean( programArguments.get("mineTrainFromScratch") ) : true;
-        boolean mineTestFromScratch = programArguments.get("mineTestFromScratch") != null ? Boolean.getBoolean( programArguments.get("mineTestFromScratch") ) : true;
+        boolean mineTrainFromScratch = programArguments.get("mineTrainFromScratch") != null ? Boolean.parseBoolean( programArguments.get("mineTrainFromScratch") ) : true;
+        boolean mineTestFromScratch = programArguments.get("mineTestFromScratch") != null ? Boolean.parseBoolean( programArguments.get("mineTestFromScratch") ) : true;
 
         SpecMiner trainProjsSpecMiner = new SpecMiner(framework, frameworkJarPath, frameworkPackage, trainProjectsPath, minerType, exclusionFilePath);
         CommonConstants.LOGGER.log( Level.INFO, "Analyzing training projects");
