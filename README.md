@@ -1,6 +1,6 @@
 This is the home of **ArCode**, a tool that facilitates the use of application frameworks to implement tactics and patterns. 
 
-You may cite ArCode software using its DOI as: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4581117.svg)](https://doi.org/10.5281/zenodo.4581117). 
+You may cite ArCode software using its DOI as: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4581117.svg)](https://doi.org/10.5281/zenodo.4581117) 
 
 For instance, if you use Bibtex citation formating, you may cite ArCode software as:
 
