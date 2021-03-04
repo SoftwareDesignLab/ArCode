@@ -19,7 +19,7 @@ For instance, if you use Bibtex citation formating, you may cite ArCode software
 }
 ```
 
-For other citation formats please follow this (link)[https://doi.org/10.5281/zenodo.4581116].
+For other citation formats please follow this [link](https://doi.org/10.5281/zenodo.4581116).
 
 Moreover, you may find more technical details about ArCode from its [technical paper](https://arxiv.org/abs/2102.08372).
 
