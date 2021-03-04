@@ -1,6 +1,8 @@
-This is the home of ArCode, a tool that facilitates the use of application frameworks to implement tactics and patterns. You may cite ArCode software using its DOI as: (10.5281/zenodo.4581116)[https://doi.org/10.5281/zenodo.4581116]. For instance, if you use Bibtex citation formating, you may cite ArCode software as:
+This is the home of ArCode, a tool that facilitates the use of application frameworks to implement tactics and patterns. 
 
-'''
+You may cite ArCode software using its DOI as: (10.5281/zenodo.4581116)[https://doi.org/10.5281/zenodo.4581116]. For instance, if you use Bibtex citation formating, you may cite ArCode software as:
+
+```
 @software{shokri_ali_2021_4581117,
   author       = {Shokri, Ali and
                   Santos, Joanna C. S. and
@@ -13,7 +15,7 @@ This is the home of ArCode, a tool that facilitates the use of application frame
   doi          = {10.5281/zenodo.4581117},
   url          = {https://doi.org/10.5281/zenodo.4581117}
 }
-'''
+```
 
 For other citation formats please follow this (link)[https://doi.org/10.5281/zenodo.4581116].
 
