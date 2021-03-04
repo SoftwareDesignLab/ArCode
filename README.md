@@ -1,6 +1,8 @@
-This is the home of ArCode, a tool that facilitates the use of application frameworks to implement tactics and patterns. 
+This is the home of **ArCode**, a tool that facilitates the use of application frameworks to implement tactics and patterns. 
 
-You may cite ArCode software using its DOI as: (10.5281/zenodo.4581116)[https://doi.org/10.5281/zenodo.4581116]. For instance, if you use Bibtex citation formating, you may cite ArCode software as:
+You may cite ArCode software using its DOI as: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4581117.svg)](https://doi.org/10.5281/zenodo.4581117). 
+
+For instance, if you use Bibtex citation formating, you may cite ArCode software as:
 
 ```
 @software{shokri_ali_2021_4581117,
