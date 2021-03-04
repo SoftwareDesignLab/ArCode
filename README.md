@@ -1,4 +1,23 @@
-This is the home of ArCode, a tool that facilitates the use of application frameworks to implement tactics and patterns. 
+This is the home of ArCode, a tool that facilitates the use of application frameworks to implement tactics and patterns. You may cite ArCode software using its DOI as: (10.5281/zenodo.4581116)[https://doi.org/10.5281/zenodo.4581116]. For instance, if you use Bibtex citation formating, you may cite ArCode software as:
+
+'''
+@software{shokri_ali_2021_4581117,
+  author       = {Shokri, Ali and
+                  Santos, Joanna C. S. and
+                  Mirakhorli, Mehdi},
+  title        = {ArCode-1.2.1},
+  month        = mar,
+  year         = 2021,
+  publisher    = {Zenodo},
+  version      = {1.2.1},
+  doi          = {10.5281/zenodo.4581117},
+  url          = {https://doi.org/10.5281/zenodo.4581117}
+}
+'''
+
+For other citation formats please follow this (link)[https://doi.org/10.5281/zenodo.4581116].
+
+Moreover, you may find more technical details about ArCode from its [technical paper](https://arxiv.org/abs/2102.08372).
 
 # What is ArCode?
 ArCode is a tool for analyzing programs written in Java, finding how APIs of a framework are being used in those programs, and providing recommendations on either how to correct possible API misuses or how to complete an incomplete program (w.r.t. APIs of that framework).
