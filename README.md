@@ -1,6 +1,6 @@
-This is the home of **ArCode**, a tool that facilitates the use of application frameworks to implement tactics and patterns. 
+This is the home of **ArCode**, an approach that facilitates the use of application frameworks to implement tactics and patterns. 
 
-You may cite ArCode software using its DOI as: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4581117.svg)](https://doi.org/10.5281/zenodo.4581117) 
+You may cite ArCode artifact using its DOI as: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4581117.svg)](https://doi.org/10.5281/zenodo.4581117) 
 
 For instance, if you use Bibtex citation formating, you may cite ArCode software as:
 
@@ -122,7 +122,8 @@ After running ArCode, four folders in training as well as testing projects' dire
 ArCode uses GRAAMs generated for training programs to create the FSpec of JAAS. Then, it generates API misuses from GRAAMs of test data set. Finally, it provides recommendations for generated test cases and computes the accuracy of top-K recommendations. 
 
 # Tutorial
-Please click [here](https://youtu.be/f1AmjF3uIVw) to watch a tutorial on ArCode.
+Please click [here](https://youtu.be/f1AmjF3uIVw) to watch a tutorial on how to use ArCode artifact.
 
+For more information about technichal aspects of ArCode, please watch this [video](https://youtu.be/dzugRQKKGZc) which is the presentation of ArCode at 18th IEEE International Conference on Software Architecture (ICSA 2021).
 # Contact
 Please do not hasitate to reach out to us should you have any question about ArCode. You may get in contact with us throught as8308 at rit dot edu.
