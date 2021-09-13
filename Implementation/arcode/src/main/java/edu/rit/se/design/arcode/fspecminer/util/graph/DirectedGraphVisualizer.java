@@ -80,17 +80,28 @@ public abstract class DirectedGraphVisualizer<T extends DirectedGraphNode, E ext
         result.append(fontnameStr);
         result.append("]; \n");
 
-        directedGraph.iterator().forEachRemaining( graphNode ->addNode( graphNode, result ) );
-        directedGraph.iterator().forEachRemaining( fromNode -> {
-            getEdgeTypes().forEach( directedGraphEdgeType -> {
-                directedGraph.getSuccNodes( fromNode, directedGraphEdgeType ).forEach(toNode -> {
-                    addEdge( fromNode, toNode, directedGraphEdgeType, directedGraph.getEdge(fromNode, toNode, directedGraphEdgeType), result );
-                } );
-            } );
-        } );
+        addNodes(result, this.directedGraph);
+        addEdges(result);
 
         result.append("\n}");
         return result;
+    }
+
+    protected void addNodes( StringBuilder result, DirectedGraph directedGraph ){
+        directedGraph.iterator().forEachRemaining((graphNode) -> {
+            this.addNode((T) graphNode, result);
+        });
+    }
+
+    protected void addEdges(StringBuilder result){
+        this.directedGraph.iterator().forEachRemaining((fromNode) -> {
+            this.getEdgeTypes().forEach((directedGraphEdgeType) -> {
+                this.directedGraph.getSuccNodes(fromNode, directedGraphEdgeType).forEach((toNode) -> {
+                    this.addEdge(fromNode, toNode, directedGraphEdgeType, this.directedGraph.getEdge(fromNode, toNode, directedGraphEdgeType), result);
+                });
+            });
+        });
+
     }
 
     protected void addNode(T graphNode, StringBuilder stringBuilder ){

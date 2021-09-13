@@ -48,14 +48,14 @@ public abstract class AbstractCodeGenerator<T extends DirectedGraph, E extends D
         return generatedCode;
     }
 
-    StringBuilder generateClassSignature( String indention, String classComments ){
+    protected StringBuilder generateClassSignature( String indention, String classComments ){
         StringBuilder classSignature = new StringBuilder();
         classSignature.append( indention + "/*" + classComments + "*/\n");
         classSignature.append( indention + "public class JaasPractice{\n");
         return classSignature;
     }
 
-    StringBuilder generateMethodSignature( String indention, String methodComment, String methodName, SymbolTable symbolTable){
+    protected StringBuilder generateMethodSignature( String indention, String methodComment, String methodName, SymbolTable symbolTable){
         StringBuilder methodSignature = new StringBuilder("/*" + methodComment + "*/\n" + indention +
                 "public void " + methodName + "(");
         StringBuilder arguments = new StringBuilder();
@@ -77,7 +77,7 @@ public abstract class AbstractCodeGenerator<T extends DirectedGraph, E extends D
 
     abstract protected Pair getClassNameVarName(Object object, SymbolTable symbolTable );
 
-    StringBuilder generateMethodBody( String indention, T directedGraph, E graphNode, SymbolTable symbolTable) throws CodeGenerationException {
+    protected StringBuilder generateMethodBody( String indention, T directedGraph, E graphNode, SymbolTable symbolTable) throws CodeGenerationException {
         StringBuilder generatedCode = new StringBuilder( indention + "try{\n");
 
         Set<E> generatedDirectedGraphNodes = new HashSet<>();
@@ -87,7 +87,7 @@ public abstract class AbstractCodeGenerator<T extends DirectedGraph, E extends D
         return generatedCode;
     }
 
-    void generateCode( StringBuilder generatedCode, String indention, T directedGraph, E graphNode, SymbolTable symbolTable, Set<E> generatedDirectedGraphNodes ) throws CodeGenerationException {
+    protected void generateCode( StringBuilder generatedCode, String indention, T directedGraph, E graphNode, SymbolTable symbolTable, Set<E> generatedDirectedGraphNodes ) throws CodeGenerationException {
         if( generatedDirectedGraphNodes.contains( graphNode ) )
             return;
         for( Object graphNodePredObj : directedGraph.getPredNodes( graphNode ) ){

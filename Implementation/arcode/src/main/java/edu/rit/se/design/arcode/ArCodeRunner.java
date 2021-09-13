@@ -29,6 +29,10 @@ import edu.rit.se.design.arcode.fspec2code.ClassHierarchyUtil;
 import edu.rit.se.design.arcode.fspec2code.CodeGenerationException;
 import edu.rit.se.design.arcode.fspec2recom.*;
 import edu.rit.se.design.arcode.fspecminer.SpecMiner;
+import edu.rit.se.design.arcode.fspecminer.fspec.FSpec;
+import edu.rit.se.design.arcode.fspecminer.fspec.FSpecNode;
+import edu.rit.se.design.arcode.fspecminer.fspec.FSpecUtil;
+import edu.rit.se.design.arcode.fspecminer.fspec.FSpecVisualizer;
 import edu.rit.se.design.arcode.fspecminer.graam.GRAAM;
 import edu.rit.se.design.arcode.fspecminer.graam.GRAAMVisualizer;
 import edu.rit.se.design.arcode.fspecminer.util.common.CommonConstants;
@@ -39,6 +43,60 @@ import org.apache.commons.cli.*;
  */
 
 public class ArCodeRunner {
+
+    public static void main(String[] args) throws Exception {
+
+        CommonConstants.LOGGER.setLevel( Level.FINE );
+
+        Map<String, String> programArguments = extractProgramArguments( args );
+
+        String framework = programArguments.get("framework");
+
+        String trainProjectsPath = programArguments.get("trainProjectsPath");
+        String testProjectsPath = programArguments.get("testProjectsPath");
+        String minerType = programArguments.get("minerType");
+        String fspecOutputPath = programArguments.get("fspecOutputPath");
+        String exclusionFilePath = programArguments.get("exclusionFilePath");
+        String frameworkJarPath = programArguments.get("frameworkJarPath");
+        String frameworkPackage = programArguments.get("frameworkPackage");
+        String mode = programArguments.get("mode");
+        int recommendationCutOff = programArguments.get("recommendationCutOff") != null ? Integer.parseInt( programArguments.get("recommendationCutOff") ) : 10;
+        boolean mineTrainFromScratch = programArguments.get("mineTrainFromScratch") != null ? Boolean.parseBoolean( programArguments.get("mineTrainFromScratch") ) : true;
+        boolean mineTestFromScratch = programArguments.get("mineTestFromScratch") != null ? Boolean.parseBoolean( programArguments.get("mineTestFromScratch") ) : true;
+
+        SpecMiner trainProjsSpecMiner = new SpecMiner(framework, frameworkJarPath, frameworkPackage, trainProjectsPath, minerType, exclusionFilePath);
+        CommonConstants.LOGGER.log( Level.INFO, "Analyzing training projects");
+
+        if( mineTrainFromScratch )
+            trainProjsSpecMiner.mineFrameworkSpecificationFromScratch(true);
+        else
+            trainProjsSpecMiner.mineFrameworkSpecificationFromSerializedGRAAMs();
+
+        int edges = 0;
+        for (FSpecNode fSpecNode : trainProjsSpecMiner.getMinedFSpec().getNodeSet()) {
+            edges += trainProjsSpecMiner.getMinedFSpec().getSuccNodeCount( fSpecNode );
+        }
+
+        trainProjsSpecMiner.saveFSpecToFile( fspecOutputPath );
+
+        CommonConstants.LOGGER.log( Level.INFO, "Analyzing testing projects");
+        SpecMiner testProjsSpecMiner = new SpecMiner(framework, frameworkJarPath, frameworkPackage, testProjectsPath, minerType, exclusionFilePath);
+
+        if( mineTestFromScratch )
+            testProjsSpecMiner.mineFrameworkSpecificationFromScratch(false);
+        else
+            testProjsSpecMiner.mineFrameworkSpecificationFromSerializedGRAAMs();
+
+        Map<GRAAM, List<GraphEditDistanceInfo>> recommendationMap = FSpec2Recom.fspec2Recom( trainProjsSpecMiner.getMinedFSpec(), testProjsSpecMiner.getSerializedGRAAMsFolder(), recommendationCutOff );
+        generateDotAndCodeSnippetFiles( recommendationMap, testProjectsPath, frameworkJarPath, exclusionFilePath );
+
+    }
+
+    public static void main2(String[] args) throws IOException, ClassNotFoundException {
+        FSpec fspec = FSpecUtil.loadFromFile( "/Users/as8308/Desktop/Ali/RIT/My Drive/Research/Projects/ArCode/DataRepository/JAAS/FSpec.spmn" );
+        System.out.println( new FSpecVisualizer( fspec ).dotOutput() );
+    }
+
     static Map<String, String> extractProgramArguments(String[] args) throws ParseException {
         Map<String, String> programArguments = new HashMap<>();
         Option framework = Option.builder( "framework" ).required(true).hasArg().build();
@@ -86,7 +144,7 @@ public class ArCodeRunner {
         return programArguments;
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main1(String[] args) throws Exception {
 
         CommonConstants.LOGGER.setLevel( Level.FINE );
 
@@ -185,6 +243,8 @@ public class ArCodeRunner {
     }
 
     static void createFile( String filePath, StringBuilder content ) throws IOException {
+        File newDirectory = new File(filePath.substring( 0, filePath.lastIndexOf(File.separator) ));
+        newDirectory.mkdirs();
         File newFile = new File(filePath);
         newFile.createNewFile();
         FileWriter myWriter = new FileWriter(newFile);
