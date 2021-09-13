@@ -1,4 +1,27 @@
-This is the home of ArCode, a tool that facilitates the use of application frameworks to implement tactics and patterns. 
+This is the home of **ArCode**, an approach that facilitates the use of application frameworks to implement tactics and patterns. 
+
+You may find more technical details about ArCode from its [technical paper](https://ieeexplore.ieee.org/abstract/document/9426773) published as a proceeding of ICSA21.
+
+The artifact of ArCode is citable through its DOI as: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4581117.svg)](https://doi.org/10.5281/zenodo.4581117) 
+
+For instance, if you use Bibtex citation formating, you may cite ArCode software as:
+
+```
+@software{shokri_ali_2021_4581117,
+  author       = {Shokri, Ali and
+                  Santos, Joanna C. S. and
+                  Mirakhorli, Mehdi},
+  title        = {ArCode-1.2.1},
+  month        = mar,
+  year         = 2021,
+  publisher    = {Zenodo},
+  version      = {1.2.1},
+  doi          = {10.5281/zenodo.4581117},
+  url          = {https://doi.org/10.5281/zenodo.4581117}
+}
+```
+
+For other citation formats please follow this [link](https://doi.org/10.5281/zenodo.4581116).
 
 # What is ArCode?
 ArCode is a tool for analyzing programs written in Java, finding how APIs of a framework are being used in those programs, and providing recommendations on either how to correct possible API misuses or how to complete an incomplete program (w.r.t. APIs of that framework).
@@ -99,7 +122,8 @@ After running ArCode, four folders in training as well as testing projects' dire
 ArCode uses GRAAMs generated for training programs to create the FSpec of JAAS. Then, it generates API misuses from GRAAMs of test data set. Finally, it provides recommendations for generated test cases and computes the accuracy of top-K recommendations. 
 
 # Tutorial
-Please click [here](https://youtu.be/f1AmjF3uIVw) to watch a tutorial on ArCode.
+Please click [here](https://youtu.be/f1AmjF3uIVw) to watch a tutorial on how to use ArCode artifact.
 
+For more information about technichal aspects of ArCode, please watch this [video](https://youtu.be/dzugRQKKGZc) which is the presentation of ArCode at 18th IEEE International Conference on Software Architecture (ICSA 2021).
 # Contact
 Please do not hasitate to reach out to us should you have any question about ArCode. You may get in contact with us throught as8308 at rit dot edu.
