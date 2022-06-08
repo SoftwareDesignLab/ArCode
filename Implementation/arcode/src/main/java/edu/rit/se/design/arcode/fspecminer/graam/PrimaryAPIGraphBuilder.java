@@ -86,11 +86,16 @@ public class PrimaryAPIGraphBuilder {
                 CallGraphSequenceBasedSlicer callGraphSequenceBasedSlicer = new CallGraphSequenceBasedSlicer();
                 Graph<Statement> sequenceBasedSlicedCallGraph = callGraphSequenceBasedSlicer.sliceCallGraph(callGraph, entrypoint, relevantStatements);
 
+//                System.out.println("\t\t Creating a sequence-based slice of the call graph");
+                CallGraphControlBasedSlicer callGraphControlBasedSlicer = new CallGraphControlBasedSlicer();
+                Graph<Statement> controlBasedSlicedCallGraph = callGraphControlBasedSlicer.sliceCallGraph(callGraph, entrypoint, relevantStatements);
+
+
 //                System.out.println("\t\t Creating a data-based slice of the call graph");
                 CallGraphDataBasedSlicer callGraphDataBasedSlicer = new CallGraphDataBasedSlicer();
                 Graph<Statement> dataBasedSlicedCallGraph = callGraphDataBasedSlicer.sliceCallGraph(callGraph, pointerAnalysis, relevantStatements);
 
-                PrimaryAPIUsageGraph primaryAPIUsageGraph = createPrimaryAPIUsageGraph( projectInfo, sequenceBasedSlicedCallGraph,
+                PrimaryAPIUsageGraph primaryAPIUsageGraph = createPrimaryAPIUsageGraph( projectInfo, /*sequenceBasedSlicedCallGraph*/ controlBasedSlicedCallGraph,
                         dataBasedSlicedCallGraph, relevantStatements, frameworkUtils);
 
 
