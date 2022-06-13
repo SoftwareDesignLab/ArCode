@@ -15,7 +15,9 @@
 
 package edu.rit.se.design.arcode.fspecminer.graam;
 
+import com.ibm.wala.cast.java.loader.JavaSourceLoaderImpl;
 import com.ibm.wala.classLoader.IClass;
+import com.ibm.wala.classLoader.IMethod;
 import com.ibm.wala.ipa.callgraph.CGNode;
 import com.ibm.wala.ipa.callgraph.CallGraph;
 import com.ibm.wala.ipa.callgraph.propagation.PointerAnalysis;
@@ -28,6 +30,7 @@ import com.ibm.wala.ssa.SSANewInstruction;
 import com.ibm.wala.types.ClassLoaderReference;
 import com.ibm.wala.util.graph.Graph;
 import edu.rit.se.design.arcode.fspecminer.analysis.*;
+import edu.rit.se.design.arcode.fspecminer.graam.code2vecApi.Code2VecUtil;
 import edu.rit.se.design.arcode.fspecminer.ifd.IFD;
 import edu.rit.se.design.arcode.fspecminer.ifd.IFDEdgeType;
 import edu.rit.se.design.arcode.fspecminer.ifd.MethodRepresentation;
@@ -70,6 +73,7 @@ public class PrimaryAPIGraphBuilder {
         CallGraph callGraph = projectAnalysis.getCallGraph();
         PointerAnalysis pointerAnalysis = projectAnalysis.getPointerAnalysis();
         ProjectInfo projectInfo = projectAnalysis.getProjectInfo();
+        String decompiledProjectDir = Binary2SourceUtils.decompileJarFile( projectInfo.getPath() );
         Set<Statement> relevantStatements = findRelevantStatements(ifd.getFramework(), callGraph);
 
 //        AtomicReference<StringBuilder> controlOnlySdgDot = new AtomicReference<>(new StringBuilder());
@@ -96,7 +100,7 @@ public class PrimaryAPIGraphBuilder {
                 Graph<Statement> dataBasedSlicedCallGraph = callGraphDataBasedSlicer.sliceCallGraph(callGraph, pointerAnalysis, relevantStatements);
 
                 PrimaryAPIUsageGraph primaryAPIUsageGraph = createPrimaryAPIUsageGraph( projectInfo, /*sequenceBasedSlicedCallGraph*/ controlBasedSlicedCallGraph,
-                        dataBasedSlicedCallGraph, relevantStatements, frameworkUtils);
+                        dataBasedSlicedCallGraph, relevantStatements, frameworkUtils, decompiledProjectDir);
 
 
                 if (primaryAPIUsageGraph.getNumberOfNodes() == 0)
@@ -282,10 +286,14 @@ public class PrimaryAPIGraphBuilder {
         if( !map.containsKey( fromNode ) )
             map.put( fromNode, new HashSet<>() );
 
+        if( map.get(fromNode).contains(toNode) )
+            return;
+
         map.get( fromNode ).add( toNode );
 
         // Establish relationships between fromNode and toNode children (if available in the map)
-        if( map.containsKey( toNode ) )
+        // we exclude the situations that the fromNode and toNode are the same to avoid trapping in an infinite loop
+        if( map.containsKey( toNode ) && !GRAAMBuilder.areSemanticallyTheSame(fromNode, toNode) )
             map.get(toNode).iterator().forEachRemaining( toNodeSucc -> {
                 addPrecedenceRelationship( fromNode, toNodeSucc, map );
             } );
@@ -317,12 +325,12 @@ public class PrimaryAPIGraphBuilder {
         return true;
     }
 
-    static PrimaryAPIUsageGraph createPrimaryAPIUsageGraph( ProjectInfo projectInfo, Graph<Statement> sequenceBasedCallGraphSlice, Graph<Statement> dataBasedCallGraphSlice, Set<Statement> relevantStatements, FrameworkUtils frameworkUtils ){
+    static PrimaryAPIUsageGraph createPrimaryAPIUsageGraph( ProjectInfo projectInfo, Graph<Statement> sequenceBasedCallGraphSlice, Graph<Statement> dataBasedCallGraphSlice, Set<Statement> relevantStatements, FrameworkUtils frameworkUtils, String decompiledProjectDir ){
         PrimaryAPIUsageGraph primaryAPIUsageGraph = new PrimaryAPIUsageGraph(projectInfo, PrimaryAPIUsageGraphEdgeType.DATA_DEPENDENCY);
         Map<Statement, DirectedGraphNode> statementDirectedGraphNodeMap = new HashMap<>();
         sequenceBasedCallGraphSlice.iterator().forEachRemaining( statement -> {
             try {
-                DirectedGraphNode graphNode = toGraphNode( statement, relevantStatements, frameworkUtils, statementDirectedGraphNodeMap );
+                DirectedGraphNode graphNode = toGraphNode( statement, relevantStatements, frameworkUtils, statementDirectedGraphNodeMap, decompiledProjectDir );
 //                if( !primaryAPIUsageGraph.containsNode( graphNode ) )
                 primaryAPIUsageGraph.addNode( graphNode );
             } catch (FrameworkUtilityNotFoundException e) {
@@ -333,8 +341,8 @@ public class PrimaryAPIGraphBuilder {
         sequenceBasedCallGraphSlice.iterator().forEachRemaining( fromStatement -> {
             sequenceBasedCallGraphSlice.getSuccNodes( fromStatement ).forEachRemaining( toStatement -> {
                 try {
-                    DirectedGraphNode fromNode = toGraphNode( fromStatement, relevantStatements, frameworkUtils, statementDirectedGraphNodeMap );
-                    DirectedGraphNode toNode =  toGraphNode( toStatement, relevantStatements, frameworkUtils, statementDirectedGraphNodeMap );
+                    DirectedGraphNode fromNode = toGraphNode( fromStatement, relevantStatements, frameworkUtils, statementDirectedGraphNodeMap, decompiledProjectDir );
+                    DirectedGraphNode toNode =  toGraphNode( toStatement, relevantStatements, frameworkUtils, statementDirectedGraphNodeMap, decompiledProjectDir );
                     if( !primaryAPIUsageGraph.hasEdge( fromNode, toNode, PrimaryAPIUsageGraphEdgeType.SEQUENCE_DEPENDENCY ) )
                         primaryAPIUsageGraph.addEdge( fromNode, toNode, PrimaryAPIUsageGraphEdgeType.SEQUENCE_DEPENDENCY );
                 } catch (FrameworkUtilityNotFoundException e) {
@@ -360,8 +368,8 @@ public class PrimaryAPIGraphBuilder {
         dataBasedCallGraphSlice.iterator().forEachRemaining( fromStatement -> {
             dataBasedCallGraphSlice.getSuccNodes( fromStatement ).forEachRemaining( toStatement -> {
                 try {
-                    DirectedGraphNode fromNode = toGraphNode( fromStatement, relevantStatements, frameworkUtils, statementDirectedGraphNodeMap );
-                    DirectedGraphNode toNode = toGraphNode( toStatement, relevantStatements, frameworkUtils, statementDirectedGraphNodeMap );
+                    DirectedGraphNode fromNode = toGraphNode( fromStatement, relevantStatements, frameworkUtils, statementDirectedGraphNodeMap, decompiledProjectDir );
+                    DirectedGraphNode toNode = toGraphNode( toStatement, relevantStatements, frameworkUtils, statementDirectedGraphNodeMap, decompiledProjectDir );
                     if( primaryAPIUsageGraph.containsNode( fromNode ) && primaryAPIUsageGraph.containsNode( toNode ) )
                         if( !primaryAPIUsageGraph.hasEdge( fromNode, toNode, PrimaryAPIUsageGraphEdgeType.DATA_DEPENDENCY ) )
                             primaryAPIUsageGraph.addEdge( fromNode, toNode, PrimaryAPIUsageGraphEdgeType.DATA_DEPENDENCY );
@@ -570,16 +578,16 @@ public class PrimaryAPIGraphBuilder {
 
 
 
-    static DirectedGraphNode toGraphNode(Statement statement, Set<Statement> relevantStatements, FrameworkUtils frameworkUtils, Map<Statement, DirectedGraphNode> statementDirectedGraphNodeMap ) throws FrameworkUtilityNotFoundException {
+    static DirectedGraphNode toGraphNode(Statement statement, Set<Statement> relevantStatements, FrameworkUtils frameworkUtils, Map<Statement, DirectedGraphNode> statementDirectedGraphNodeMap, String decompiledProjectDir ) throws FrameworkUtilityNotFoundException {
 //        if(statement.toString().contains("LoginContext") && statement.toString().contains("TestClass"))
 //            System.out.print("");
         if( statementDirectedGraphNodeMap.containsKey( statement ) )
             return statementDirectedGraphNodeMap.get( statement );
         DirectedGraphNode directedGraphNode = null;
         if( relevantStatements.contains( statement ) )
-            directedGraphNode = new FrameworkRelatedNode( toStatementRepresentation( statement, frameworkUtils ) );
+            directedGraphNode = new FrameworkRelatedNode( toStatementRepresentation( statement, frameworkUtils, decompiledProjectDir ) );
         else
-            directedGraphNode = new NonFrameworkMiddleNode( toStatementRepresentation( statement, frameworkUtils ) );
+            directedGraphNode = new NonFrameworkMiddleNode( toStatementRepresentation( statement, frameworkUtils, decompiledProjectDir ) );
         statementDirectedGraphNodeMap.put( statement, directedGraphNode );
         return directedGraphNode;
     }
@@ -763,15 +771,31 @@ public class PrimaryAPIGraphBuilder {
         return null;
     }
 
-    public static StatementRepresentation toStatementRepresentation( Statement statement, FrameworkUtils frameworkUtils ){
+/*    static StringBuilder decompileMethod(IClass iClass, IMethod iMethod){
+        ((JavaSourceLoaderImpl.ConcreteJavaMethod) iMethod)
+        return null;
+    }*/
+
+    public static StatementRepresentation toStatementRepresentation( Statement statement, FrameworkUtils frameworkUtils, String decompiledProjectDir ){
         String originClass = statement.getNode().getMethod().getDeclaringClass().getName().toString();//getSignature().split("\\.")[0];
         String originMethod = statement.getNode().getMethod().getSelector().toString();//getSignature().split("\\.")[1];
         int originalLineNumber = ((NormalStatement)statement).getNode().getIR().getMethod().getLineNumber( ((NormalStatement) statement).getInstructionIndex() );
         IClass targetClass = WalaUtils.getTargetClass( statement );
+//        String str = ((JavaSourceLoaderImpl.ConcreteJavaMethod) ((NormalStatement)statement).getNode().getIR().getMethod()).toString();
+
+        MethodContextInfo originalMethodInfo = null;
+        try {
+            StringBuilder originMethodSourceCode = Binary2SourceUtils.findMethod( decompiledProjectDir, statement.getNode().getMethod() );
+            Map<String,Double>  scoredMethodNames = Code2VecUtil.getRankedMethodNameMap( originMethodSourceCode.toString() );
+            originalMethodInfo = new MethodContextInfo( scoredMethodNames );
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
         if( targetClass == null )
             return new StatementRepresentation("Unknown", "Unknown", false, false, true,
                     originClass , originMethod, originalLineNumber, StatementRepresentation.ApiType.UNKNOWN,
-                    ((NormalStatement) statement).getInstructionIndex(), statement.getNode().getGraphNodeId() /*System.identityHashCode (statement.getNode())*/);
+                    ((NormalStatement) statement).getInstructionIndex(), statement.getNode().getGraphNodeId() /*System.identityHashCode (statement.getNode())*/, originalMethodInfo);
         IClass frameworkClass = frameworkUtils.getFrameworkType( targetClass );
         String frameworkClassStr = frameworkClass.getName().toString();
         // To remove the letter "L" from the beginning of the class name (e.g. Ljava.... -> java...)
@@ -789,7 +813,7 @@ public class PrimaryAPIGraphBuilder {
         StatementRepresentation statementRepresentation = new StatementRepresentation(frameworkClassStr, frameworkMethod,
                 isAbstractOrInterface, isStaticMethod, isPublicMethod,
                 originClass, originMethod, originalLineNumber, apiType,
-                ((NormalStatement) statement).getInstructionIndex(), System.identityHashCode (statement.getNode()));
+                ((NormalStatement) statement).getInstructionIndex(), System.identityHashCode (statement.getNode()), originalMethodInfo);
         return statementRepresentation;
     }
 

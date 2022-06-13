@@ -53,6 +53,9 @@ public class FSpecBuilder {
         edgeTypeMapping.keySet().forEach( graamEdgeType -> {
             FSpecEdgeType fSpecEdgeType = edgeTypeMapping.get( graamEdgeType );
             graam.getSuccNodes( graamNode, graamEdgeType ).forEach( graamNodeSucc -> {
+                // Check to see if there is a corresponding node in the FSpec to graamNodeSucc. If so, then, add the
+                // frequency of the corresponding edge or establish a new edge. Otherwise, create a new FSpecNode and establish
+                // new edge.
                 if( nodeMap.get( graamNodeSucc ) != null ){
                     // If there is an edge, increment the frequency by 1
                     if( fSpec.hasEdge( nodeMap.get( graamNode ), nodeMap.get( graamNodeSucc ), fSpecEdgeType ) )
@@ -60,6 +63,11 @@ public class FSpecBuilder {
                     else
                     // else create an edge with frequency of 1
                         fSpec.addEdge( nodeMap.get( graamNode ), nodeMap.get( graamNodeSucc ), fSpecEdgeType , new FSpecEdge(graam.getTitle()) );
+
+                    // Merge methodContextInfo for the current FSpecNode and the mapped GraamNode
+                    if( nodeMap.get( graamNodeSucc ) instanceof FSpecAPINode ) {
+                        ((FSpecAPINode) nodeMap.get(graamNodeSucc)).getMethodContextInfo().merge(((FrameworkRelatedNode)graamNodeSucc).getMethodContextInfo() );
+                    }
                 }
                 else{
                     // Add the node with frequency of 1
@@ -100,9 +108,9 @@ public class FSpecBuilder {
         FSpecAPINode fSpecAPINode = null;
         if( graamNode.isInitNode() )
             fSpecAPINode = new FSpecAPIInstantiationNode( graamNode.getFrameworkRelatedClass(), graamNode.getFrameworkRelatedMethod(),
-                    graamNode.isAbstractOrInterfaceConstructorNode(), graamNode.isPublicMethod() );
+                    graamNode.isAbstractOrInterfaceConstructorNode(), graamNode.isPublicMethod(), graamNode.getMethodContextInfo() );
         else
-            fSpecAPINode = new FSpecAPICallNode( graamNode.getFrameworkRelatedClass(), graamNode.getFrameworkRelatedMethod(), graamNode.isStaticMethod(), graamNode.isPublicMethod() );
+            fSpecAPINode = new FSpecAPICallNode( graamNode.getFrameworkRelatedClass(), graamNode.getFrameworkRelatedMethod(), graamNode.isStaticMethod(), graamNode.isPublicMethod(), graamNode.getMethodContextInfo() );
         return fSpecAPINode;
     }
 

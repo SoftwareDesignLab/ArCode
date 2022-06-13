@@ -15,6 +15,8 @@
 
 package edu.rit.se.design.arcode.fspecminer.fspec;
 
+import edu.rit.se.design.arcode.fspecminer.graam.MethodContextInfo;
+
 import java.util.List;
 
 /**
@@ -25,4 +27,5 @@ public interface FSpecAPINode extends FSpecNode{
     public String getFullClassName();
     public String getSimpleClassName();
     public List<String> getArgumentTypes();
+    public MethodContextInfo getMethodContextInfo();
 }

@@ -129,6 +129,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.jetbrains.java.decompiler</groupId>
+            <artifactId>org.jetbrains.java.decompiler.main</artifactId>
+            <version>2.0.0</version>            <scope>system</scope>
+            <systemPath>${basedir}/lib/fernflower.jar</systemPath>
+        </dependency>
 <!--        https://mvnrepository.com/artifact/org.ow2.asm/asm-->
         <!--dependency>
             <groupId>org.ow2.asm</groupId>
@@ -136,6 +142,24 @@
             <version>8.0.1</version>
         </dependency-->
 
+        <!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-core -->
+        <dependency>
+            <groupId>com.github.javaparser</groupId>
+            <artifactId>javaparser-core</artifactId>
+            <version>3.24.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-symbol-solver-core -->
+        <dependency>
+            <groupId>com.github.javaparser</groupId>
+            <artifactId>javaparser-symbol-solver-core</artifactId>
+            <version>3.24.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20210307</version>
+        </dependency>
 
     </dependencies>
 
@@ -147,11 +171,18 @@
                 <version>3.8.1</version>
 
                 <configuration>
-                    <compilerArgument>-XDignore.symbol.file</compilerArgument>
+                    <compilerArgs>
+                        <arg>-XDignore.symbol.file</arg>
+                        <arg>--add-exports</arg><arg>java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED</arg>
+                        <arg>--add-exports</arg><arg>java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED</arg>
+                    </compilerArgs>
+
+<!--                    <compilerArgument>-XDignore.symbol.file</compilerArgument>-->
+
                     <fork>true</fork>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <!--                    <encoding>UTF-8</encoding>-->
+                    <source>11</source>
+                    <target>11</target>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <plugin>

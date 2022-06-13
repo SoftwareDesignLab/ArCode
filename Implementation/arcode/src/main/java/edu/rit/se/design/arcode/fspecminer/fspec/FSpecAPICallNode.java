@@ -15,6 +15,8 @@
 
 package edu.rit.se.design.arcode.fspecminer.fspec;
 
+import edu.rit.se.design.arcode.fspecminer.graam.MethodContextInfo;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,12 +29,14 @@ public class FSpecAPICallNode implements FSpecAPINode {
     String methodSignature;
     boolean staticMethod;
     boolean publicMethod;
+    MethodContextInfo methodContextInfo;
 
-    public FSpecAPICallNode(String className, String methodSignature, boolean isStaticMethod, boolean isPublicMethod) {
+    public FSpecAPICallNode(String className, String methodSignature, boolean isStaticMethod, boolean isPublicMethod, MethodContextInfo methodContextInfo) {
         this.className = className;
         this.methodSignature = methodSignature;
         this.staticMethod = isStaticMethod;
         this.publicMethod = isPublicMethod;
+        this.methodContextInfo = methodContextInfo;
     }
 
     public String getFullClassName() {
@@ -53,6 +57,11 @@ public class FSpecAPICallNode implements FSpecAPINode {
                 argumentTypes.add( candidateArgument );
         }
         return argumentTypes;
+    }
+
+    @Override
+    public MethodContextInfo getMethodContextInfo() {
+        return methodContextInfo;
     }
 
     public String getMethodSignature() {
@@ -89,6 +98,6 @@ public class FSpecAPICallNode implements FSpecAPINode {
 
     @Override
     public FSpecAPICallNode clone() {
-        return new FSpecAPICallNode( className,  methodSignature,  staticMethod,  publicMethod);
+        return new FSpecAPICallNode( className,  methodSignature,  staticMethod,  publicMethod, methodContextInfo.clone());
     }
 }

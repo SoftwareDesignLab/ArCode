@@ -61,7 +61,7 @@ public class GRAAMBuilder {
                 statementRepresentation.frameworkMethod, statementRepresentation.isAbstractOrInterfaceConstructorNode,
                 statementRepresentation.isStaticMethod, statementRepresentation.isPublicMethod, statementRepresentation.originClass,
                 statementRepresentation.originMethod, statementRepresentation.originalLineNumber, statementRepresentation.apiType,
-                statementRepresentation.originalStatementIIndex, statementRepresentation.originalStatementCGNodeId);
+                statementRepresentation.originalStatementIIndex, statementRepresentation.originalStatementCGNodeId, statementRepresentation.originalMethodInfo.clone());
         clonedStatementRepresentation.originalStatementIIndex = ST_RANDOM.nextInt(1000000) ;
         clonedStatementRepresentation.originalStatementCGNodeId = ST_RANDOM.nextInt(1000000);
 

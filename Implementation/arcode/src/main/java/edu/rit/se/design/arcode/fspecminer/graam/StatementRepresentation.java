@@ -16,6 +16,8 @@
 package edu.rit.se.design.arcode.fspecminer.graam;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -36,10 +38,11 @@ public class StatementRepresentation implements Serializable {
     boolean isAbstractOrInterfaceConstructorNode;
     boolean isStaticMethod;
     boolean isPublicMethod;
+    MethodContextInfo originalMethodInfo;
 
     public StatementRepresentation(String frameworkClass, String frameworkMethod, boolean isAbstractOrInterfaceConstructorNode, boolean isStaticMethod, boolean isPublicMethod,
                                    String originClass, String originMethod,
-                                   int originalLineNumber, ApiType apiType, int originalStatementIIndex, int originalStatementCGNodeId ){
+                                   int originalLineNumber, ApiType apiType, int originalStatementIIndex, int originalStatementCGNodeId, MethodContextInfo originalMethodInfo ){
         this.frameworkClass = frameworkClass;
         this.frameworkMethod = frameworkMethod;
         this.originClass = originClass;
@@ -51,6 +54,7 @@ public class StatementRepresentation implements Serializable {
         this.isAbstractOrInterfaceConstructorNode = isAbstractOrInterfaceConstructorNode;
         this.isStaticMethod = isStaticMethod;
         this.isPublicMethod = isPublicMethod;
+        this.originalMethodInfo = originalMethodInfo;
     }
 
 //    public StatementRepresentation(Statement walaStatement) {
@@ -147,4 +151,9 @@ public class StatementRepresentation implements Serializable {
     public boolean isPublicMethod() {
         return isPublicMethod;
     }
+
+    public MethodContextInfo getOriginalMethodInfo(){
+        return originalMethodInfo;
+    }
+
 }

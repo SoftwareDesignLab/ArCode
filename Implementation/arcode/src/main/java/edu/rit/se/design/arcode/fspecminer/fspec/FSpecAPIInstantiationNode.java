@@ -15,6 +15,8 @@
 
 package edu.rit.se.design.arcode.fspecminer.fspec;
 
+import edu.rit.se.design.arcode.fspecminer.graam.MethodContextInfo;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,12 +29,14 @@ public class FSpecAPIInstantiationNode implements FSpecAPINode {
     String constructorSignature;
     boolean isAbstractOrInterface;
     boolean isPublicConstructor;
+    MethodContextInfo methodContextInfo;
 
-    public FSpecAPIInstantiationNode(String className, String constructorSignature, boolean isAbstractOrInterface, boolean isPublicConstructor) {
+    public FSpecAPIInstantiationNode(String className, String constructorSignature, boolean isAbstractOrInterface, boolean isPublicConstructor, MethodContextInfo methodContextInfo) {
         this.className = className;
         this.constructorSignature = constructorSignature;
         this.isAbstractOrInterface = isAbstractOrInterface;
         this.isPublicConstructor = isPublicConstructor;
+        this.methodContextInfo = methodContextInfo;
     }
 
     public String getFullClassName() {
@@ -54,6 +58,11 @@ public class FSpecAPIInstantiationNode implements FSpecAPINode {
         }
         return argumentTypes;    }
 
+    @Override
+    public MethodContextInfo getMethodContextInfo() {
+        return methodContextInfo;
+    }
+
     public String getConstructorSignature() {
         return constructorSignature;
     }
@@ -65,7 +74,7 @@ public class FSpecAPIInstantiationNode implements FSpecAPINode {
 
     @Override
     public FSpecAPIInstantiationNode clone() {
-        return new FSpecAPIInstantiationNode( className, constructorSignature, isAbstractOrInterface, isPublicConstructor );
+        return new FSpecAPIInstantiationNode( className, constructorSignature, isAbstractOrInterface, isPublicConstructor, methodContextInfo.clone() );
     }
 
     public boolean isAbstractOrInterface(){

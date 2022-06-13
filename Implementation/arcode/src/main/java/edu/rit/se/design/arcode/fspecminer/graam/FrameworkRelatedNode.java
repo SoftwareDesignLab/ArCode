@@ -137,4 +137,8 @@ public class FrameworkRelatedNode implements DirectedGraphNode {
         return getFrameworkRelatedMethod().substring(0, getFrameworkRelatedMethod().indexOf("("));
     }
 
+    public MethodContextInfo getMethodContextInfo(){
+        return statementRepresentation.getOriginalMethodInfo();
+    }
+
 }
